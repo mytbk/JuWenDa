@@ -1,0 +1,44 @@
+.b-gra{
+	border-color:#b7b7b7;
+}
+.t-gra
+{
+	color:#a1a1a1;
+}
+.addfont{
+	font-weight:bold;
+}
+.t-blu
+{
+	color:#177fc7;
+}
+.uinnh5
+{
+	padding:0.8em 0.5em;
+	margin:0;
+}
+.respwd{
+	background-image:url('myImg/pwd.png');
+}
+.resuser{
+	background-image:url('myImg/user.png');
+}
+.logo{
+	background-image:url('myImg/logo.png');
+}
+.umhw{
+	min-height:1em;
+	min-width:1em;
+}
+.umhw1{
+	min-height:3.16em;
+	min-width:11.5em;
+}
+.umhw2{
+	min-height:1.6em;
+	min-width:1.6em;
+}
+.ulab .uinput
+{
+	margin-left:3px
+}

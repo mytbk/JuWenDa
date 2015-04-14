@@ -10,16 +10,78 @@
         <link rel="stylesheet" href="css/ui-color.css">
         <link rel="stylesheet" href="css/appcan.icon.css">
         <link rel="stylesheet" href="css/appcan.control.css">
+        <link rel="stylesheet" href="index_content/css/main.css">
     </head>
     <body class="um-vp bc-bg" ontouchstart>
+        <div class="sc-bg-active uinput ub ub-f1  bc-border uba">
+            <div class="uinn fa fa-search sc-text"></div>
+            <input placeholder="搜索问题" type="text" class="ub-f1">
+            <div class="btn ub ub-ac bc-text-head ub-pc bc-btn"  id="btn">
+                搜索
+            </div>
+
+        </div>
+        <div id="listview"  class="ubt bc-border sc-bg"></div>
 
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
+        <script src="js/appcan.listview.js"></script>
     </body>
     <script>
         appcan.ready(function() {
             appcan.initBounce();
         })
-        
+
+        appcan.button(".btn", "ani-act", function() {
+
+        })
+        var lv = appcan.listview({
+            selector : "#listview",
+            type : "thickLine",
+            hasIcon : true,
+            hasAngle : true,
+            hasSubTitle : true,
+            multiLine : 1,
+        });
+        lv.set([{
+            title : "C#中out参数有什么用法？",
+            describe : "编程",
+            note : "我回答的问题",
+            icon : "./css/res/appcan_s.png",
+            id : "1"
+        }, {
+            title : "学习代数数论使用什么样的书比较好？",
+            describe : "数学",
+            note : "我提出的问题",
+            icon : "./css/res/appcan_s.png",
+            id : "2"
+        }, {
+            title : "CMU要求GRE成绩最低是多少？",
+            describe : "出国",
+            note : "我关注的问题",
+            icon : "./css/res/appcan_s.png",
+            id : "3"
+        }, {
+            title : "函数式程序设计有什么特点？",
+            describe : "编程",
+            note : "我提出的问题",
+            icon : "./css/res/appcan_s.png",
+            id : "4"
+        }, {
+            title : "怎么求e的连分数？",
+            describe : "数学",
+            note : "可能感兴趣的问题",
+            icon : "./css/res/appcan_s.png",
+            id : "5"
+        }, {
+            title : "留学中介哪家强？",
+            describe : "出国",
+            note : "可能感兴趣的问题",
+            icon : "./css/res/appcan_s.png",
+            id : "6"
+        }])
+        lv.on("click", function(ele, obj, curEle) {
+            appcan.openWinWithUrl("content","details.html");
+        })
     </script>
 </html>

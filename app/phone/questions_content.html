@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+        <style type="text/css">
+            .div{
+                
+                
+            }
+            
+        </style>
+    </head>
+    <body class="um-vp bc-bg ub-ver" ontouchstart>
+        <div class="ub ub-ver">
+            <div id="listview">
+            </div>
+        </div>
+        
+        <script src="js/appcan.js"></script>
+        <script src="js/appcan.control.js"></script>
+        <script src="js/appcan.slider.js"></script>
+        <script src="js/appcan.listview.js"></script>
+    </body>
+    <script>
+        appcan.ready(function() {
+            //appcan.initBounce();
+        })        
+        
+        var updateData = [{
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg1.png"
+        }, {
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg2.png"
+        }, {
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg3.png"
+        }, {
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg1.png"
+        }, {
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg2.png"
+        }, {
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg3.png"
+        }, {
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg1.png"
+        }, {
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg2.png"
+        }, {
+            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
+            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
+            note : "知乎",
+            icon : "index_content/css/myImg/newsImg3.png"
+        }];
+        var lv1 = appcan.listview({
+            selector : "#listview",
+            type : "thickLine",
+            hasIcon : true,
+            hasAngle : false
+        });
+        lv1.set(updateData);
+
+        lv1.on('click', function(ele, context, obj, subobj) {
+          //  appcan.openWinWithUrl('news_articlecommon', 'news_articlecommon.html');
+        })
+    </script>
+</html>
