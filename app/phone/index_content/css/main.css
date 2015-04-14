@@ -1,0 +1,33 @@
+/*.oa1{
+	background-image:url('myImg/oa1.png');
+}
+.oa2{
+	background-image:url('myImg/oa2.png');
+}
+.oa3{
+	background-image:url('myImg/oa3.png');
+}*/
+.uw-oa{
+	width:4em;
+}
+.ulev-oa{
+	font-size:1em;
+}
+.c-prog-blue{
+	background-color:rgba(33,141,213,0.5);
+}
+.c-math-red{
+	background-color:rgba(208,23,23,0.5);
+}
+.c-goabrd-yello{
+	background-color:rgba(194,140,11,0.5);
+}
+.uw-oa2{
+	width:1em;
+}
+.uh-oa3{
+	height:20%;
+}
+.ub-f1{
+    height:10%;
+}

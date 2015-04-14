@@ -11,35 +11,80 @@
         <link rel="stylesheet" href="css/appcan.icon.css">
         <link rel="stylesheet" href="css/appcan.control.css">
     </head>
-    <body class="um-vp" ontouchstart>
+    <body class="um-vp " ontouchstart>
         <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
             <!--header开始-->
             <div id="header" class="uh bc-text-head ub bc-head">
                 <div class="nav-btn" id="nav-left"></div>
-                <h1 class="ut ub-f1 ulev-3 ut-s tx-c" tabindex="0">AppCan</h1>
-                <div class="nav-btn" id="nav-right">
-                    <!--按钮开始-->
-
-                    <!--按钮结束-->
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c" tabindex="0">聚问答</h1>
+                <div class="nav-btn nav-bt" id="nav-right">
+                    <div class="fa fa-power-off ulev1"></div>
                 </div>
             </div>
             <!--header结束--><!--content开始-->
-            <div id="content" class="ub-f1 tx-l ">
+            <div id="content" class="ub-f1 tx-l">
 
             </div>
             <!--content结束-->
+            <div id="tabview" class="uf sc-bg ubt sc-border-tab"></div>
 
         </div>
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
+        <script src="js/appcan.tab.js"></script>
     </body>
     <script>
         appcan.ready(function() {
             var titHeight = $('#header').offset().height;
+            var cntHeight = $('#content').offset().height;
+
             appcan.frame.open("content", "index_content.html", 0, titHeight);
             window.onorientationchange = window.onresize = function() {
                 appcan.frame.resize("content", 0, titHeight);
             }
         });
+        appcan.button(".nav-btn", "btn-act", function() {
+            this.id && appcan.window.open('login', 'login.html', 10);
+        });
+        var tabview = appcan.tab({
+            selector : "#tabview",
+            hasIcon : true,
+            hasAnim : true,
+            hasLabel : true,
+            hasBadge : true,
+            data : [{
+                label : "我的问题",
+                "icon" : "fa-qq"
+            }, {
+                label : "提出问题",
+                "icon" : "fa-windows"
+            }, {
+                label : "随便看看",
+                "icon" : "fa-weixin",
+                //   badge:1
+            }, {
+                label : "账户设置",
+                "icon" : "fa-weixin",
+                //   badge:1
+            }]
+        });
+        tabview.on("click", function(obj, index) {
+            var titHeight = $('#header').offset().height;
+            switch(index) {
+            case 0:
+                appcan.frame.open("content", "index_content.html", 0, titHeight);
+                return;
+            case 1:
+                appcan.frame.open("content", "asking_content.html", 0, titHeight);
+                return;
+            case 2:
+                appcan.frame.open("content", "questions_content.html", 0, titHeight);
+                return;
+            case 3:
+                appcan.frame.open("content", "settings_content.html", 0, titHeight);
+                return;
+            }
+
+        })
     </script>
 </html>
