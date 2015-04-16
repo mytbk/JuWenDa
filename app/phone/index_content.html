@@ -31,19 +31,8 @@
         appcan.ready(function() {
             appcan.initBounce();
         })
-
-        appcan.button(".btn", "ani-act", function() {
-
-        })
-        var lv = appcan.listview({
-            selector : "#listview",
-            type : "thickLine",
-            hasIcon : true,
-            hasAngle : true,
-            hasSubTitle : true,
-            multiLine : 1,
-        });
-        lv.set([{
+        
+        var UpdateData=[{
             title : "C#中out参数有什么用法？",
             describe : "编程",
             note : "我回答的问题",
@@ -79,9 +68,24 @@
             note : "可能感兴趣的问题",
             icon : "./css/res/appcan_s.png",
             id : "6"
-        }])
+        }]
+        
+        var lv = appcan.listview({
+            selector : "#listview",
+            type : "thickLine",
+            hasIcon : true,
+            hasAngle : true,
+            hasSubTitle : true,
+            multiLine : 1,
+        });
+        lv.set(UpdateData);
         lv.on("click", function(ele, obj, curEle) {
-            appcan.openWinWithUrl("content","details.html");
+            appcan.openWinWithUrl("details","details.html");
+        })
+        
+        
+        appcan.button(".btn", "ani-act", function() {
+
         })
     </script>
 </html>
