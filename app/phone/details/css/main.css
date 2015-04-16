@@ -1,0 +1,31 @@
+.c-wh1{
+	background-color:#f1f1f1;
+}
+.c-bbla{
+	background-color:#959595;
+}
+.newspicture{
+	background-image:url('myImg/picture.png');
+}
+.newszan{
+	background-image:url('myImg/zan.png');
+}
+.quxiao{
+	background-image:url('myImg/quxiao.png');
+}
+.queding{
+	background-image:url('myImg/queding.png');
+}
+.t-gra
+{
+	color:gray;
+}
+.uc-a1 {
+	-webkit-border-radius: .2em;
+	border-radius: .2em
+}
+.uban
+{
+	border:1px solid #f1f1f1;
+	
+}
