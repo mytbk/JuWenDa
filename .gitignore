@@ -24,3 +24,9 @@ proguard/
 
 # Log Files
 *.log
+
+# gitignore for usersystem
+*.pyc
+usersystem/.idea/
+usersystem/__pycache__/
+usersystem/db.sqlite3
