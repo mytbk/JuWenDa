@@ -1,6 +1,8 @@
 
 import random
 import string
+import httplib2
+from urllib.parse import urlencode
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -139,4 +141,22 @@ def set_username(request):
 
 @csrf_exempt
 def ask_question(request):
+	"""
+	更改指定用户的用户名
+	前置条件
+		该接口要求POST请求
+	参数
+		"old_username": 旧用户名
+		"new_username": 新用户名
+		"password": 密码
+	返回数据
+		"status": 操作状态<int>
+		0: 操作成功
+		1: 用户输入的旧密码错误，操作失败
+		2: 用户输入的新用户名已存在或新用户名和旧用户名相同，操作失败
+	"""
+	pass
+
+
+def ask_question_at_csdn():
 	pass
