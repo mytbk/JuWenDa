@@ -1,8 +1,20 @@
 .inques{
     font-size: 1.5em;
     font-family: Fantasy;
+    margin: 0.5em 0.8em 0.5em 0.8em;
 }
 .desques{
     font-size: 1.2em;
     font-family: Fantasy;
+    margin: 0.5em 0.8em 0.5em 0.8em;
+}
+.categ{
+    font-size: 1.2em;
+    font-family: Fantasy;
+    margin: 0.5em 0.8em 0.5em 0.8em;
+}
+.sbmt{
+    font-size: 1.2em;
+    font-family: Fantasy;
+    margin: 0.5em 0.8em 0.5em 0.8em;
 }
