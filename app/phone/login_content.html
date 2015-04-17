@@ -26,12 +26,12 @@
                     </div>
                 </div>
                 <div class="ub ub-ver ub-f1">
-                    <form method="get" action="http://www.appcan.cn">
+                    <form id="login_form" method="post">
                         <div class="uba b-gra umar-a uc-a1 c-wh">
                             <div class="ub ub-ac">
                                 <div class="umhw resuser ub-img umar-l"></div>
                                 <div class="ub-f1 uinput uinn">
-                                    <input placeholder="手机/邮箱/用户名" id="uid"  value="" type="text" class="uc-a1">
+                                    <input placeholder="手机/邮箱/用户名" id="username" name="username" type="text" class="uc-a1">
                                 </div>
                             </div>
                         </div>
@@ -39,32 +39,21 @@
                             <div class="ub ub-ac">
                                 <div class="umhw respwd ub-img umar-l"></div>
                                 <div class="ub-f1 uinput uinn">
-                                    <input placeholder="密码" id="upwd"  value="" type="password" class="uc-a1">
+                                    <input placeholder="密码" id="password" name="password" type="password" class="uc-a1">
                                 </div>
                             </div>
                         </div>
                         <div class="ub umar-a ub-ac">
-                            <div class="checkbox umar-r">
-                                <input type="checkbox" class="uabs ub-con">
-                            </div>
-                            <div class="lv_title ub-f1 marg-l ub ub-ver ut-m line1">
-                                记住用户名
+                            <div class="ub-f1 ulev-1 uinn3" id="register">
+                                立即注册
                             </div>
                             <div class="ub t-blu umar-r ulev-1" id="forget-password">
                                 忘记密码
                             </div>
                         </div>
                         <div class="uin uinn">
-                            <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1"  id="submit">
+                            <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1" id="submit">
                                 登　录
-                            </div>
-                        </div>
-                        <div class="umar-a ub t-blu">
-                            <div class="ub-f1 ulev-1 uinn3" id="register">
-                                立即注册
-                            </div>
-                            <div class="ulev-1 uinn3" id="sign-in-without-register">
-                                无账号快捷登录
                             </div>
                         </div>
                         <button type="submit"class="uinvisible"></button>
@@ -73,46 +62,10 @@
 
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/login.js"></script>
     </body>
     <script>
-        appcan.ready(function() {
-        });
-        function login() {
-            var name = $("#uid").val();
-            var pwd = $("#upwd").val();
-            if (name == "") {
-                appcan.window.openToast('账号不能为空', '2000');
-                return;
-            } else if (pwd == "") {
-                appcan.window.openToast('密码不能为空', '2000');
-                return;
-            } else {
-                $("form").submit();
-            }
-
-        }
-
-
-        appcan.button("#submit", "ani-act", function() {
-            login();
-        })
-
-        $("form").on('submit', function() {
-            appcan.request.postForm($("form"), function() {
-                // appcan.execScriptInWin('login','closeLogin()');
-                appcan.window.alert({
-                    title : "提醒",
-                    content : "您已经提交了表单:)",
-                    buttons : '确定',
-                    callback : function(err, data, dataType, optId) {
-                        console.log(err, data, dataType, optId);
-                    }
-                });
-            }, function(err) {
-
-            });
-            return false;
-        });
-
+        appcan.ready(init);
     </script>
 </html>
