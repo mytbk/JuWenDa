@@ -1,6 +1,6 @@
 
-server_url = "http://127.0.0.1:8000";
-//server_url = "http://115.27.22.68:8000";
+//server_url = "http://127.0.0.1:8000";
+server_url = "http://192.168.100.49:8000";
 
 is_created_url = server_url + "/isCreated";
 create_user_url = server_url + "/createUser";

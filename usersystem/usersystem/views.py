@@ -1,11 +1,10 @@
-
-import random
-import string
+import random, string, json
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from usersystem.models import UserModel
+from usersystem.utils import call_api, http_get
 
 
 @csrf_exempt
@@ -139,4 +138,72 @@ def set_username(request):
 
 @csrf_exempt
 def ask_question(request):
-	pass
+	"""
+	提出问题
+	前置条件
+		该接口要求POST请求
+	参数
+		"title": 问题标题
+		"description": 问题描述
+		"tag": 标签
+	返回数据
+		"status": 操作状态<int>
+		0: 操作成功
+		1: 操作失败
+	"""
+	ask_question_at_csdn("appcan获取imei失败", "appcan获取imei失败")
+	return HttpResponse("")
+
+
+def ask_question_at_csdn(title, description):
+	print("getlt")
+	# 获取lt
+	login_lt = call_api({
+	"iw-apikey": 123,
+	"iw-cmd": "getloginlt"
+	})
+	print(login_lt)
+	login_lt = json.loads(login_lt)
+	print(login_lt)
+	login_lt = login_lt["iw-response"]["iw-object"]["lt"]
+	print(login_lt)
+	# 登录
+	result = http_get("http://app.internetware.cn/jwd/?iw-apikey=123&iw-cmd=login&username=ju_wen_da@163.com&password=ju_wen_da&lt=" + login_lt)
+	print("login result: " + result)
+	# 获取提交token
+	token = http_get("http://app.internetware.cn/jwd/?iw-apikey=1234&iw-cmd=gettoken")
+	print("get token result: " + token)
+	# # 获取验证码key
+	# captchas_key = call_api({
+	# "iw-apikey": 1234,
+	# "iw-cmd": "newcaptchas"
+	# })
+	# print("get captchas")
+	# # 获取验证码
+	# captcha = call_api({
+	# "iw-apikey": 1234,
+	# "iw-cmd": "getcaptchas",
+	# "code": captchas_key
+	# })
+	# print("get catalogue")
+	# # 获取板块信息
+	# call_api({
+	# "iw-apikey": 1234,
+	# "iw-cmd": "getcatalogue"
+	# })
+	# print("post")
+	# # 发布问题
+	# post_url = call_api({
+	# "iw-apikey": 1234,
+	# "iw-cmd": "post",
+	# "captcha_key": captchas_key,
+	# "captcha": captcha,
+	# "topic[forum_id]": "Enterprise_Other",
+	# "topic[body]": description,
+	# "topic[title]": title,
+	# "topic[point]": 0,
+	# "topic[cached_tag_list]": "",
+	# "topic[invitation_usernames][]": "",
+	# "authenticity_token": token
+	# })
+	# print(post_url)
