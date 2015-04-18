@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="asking_content/css/main.css">
     </head>
     <body>
-        <form name="form" action="">
+        <form name="form">
             <div class="inques">
                 输入问题
                 <div class="sc-bg-active uinput ub ub-f1  bc-border uba">
-                    <input placeholder="输入问题" type="text" class="ub-f1" name="question">
+                    <input placeholder="输入问题" type="text" class="ub-f1" name="title">
                 </div>
             </div>
             <div class="desques">
@@ -30,7 +30,7 @@
                 分类
                 <div class="ub umar-a ub-ac">
                     <div class="radiobox umar-r" name="">
-                        <input type="radio" class="uabs ub-con" name="lv_radio" />
+                        <input type="radio" class="uabs ub-con" name="tag" />
                     </div>
                     <div class="lv_title ub-f1 marg-l ub ub-ver ut-m line1">
                         编程
@@ -38,7 +38,7 @@
                 </div>
                 <div class="ub umar-a ub-ac">
                     <div class="radiobox umar-r" name="">
-                        <input type="radio" class="uabs ub-con" name="lv_radio" />
+                        <input type="radio" class="uabs ub-con" name="tag" />
                     </div>
                     <div class="lv_title ub-f1 marg-l ub ub-ver ut-m line1">
                         数学
@@ -46,7 +46,7 @@
                 </div>
                 <div class="ub umar-a ub-ac">
                     <div class="radiobox umar-r" name="">
-                        <input type="radio" class="uabs ub-con" name="lv_radio" />
+                        <input type="radio" class="uabs ub-con" name="tag" />
                     </div>
                     <div class="lv_title ub-f1 marg-l ub ub-ver ut-m line1">
                         出国
@@ -61,6 +61,7 @@
         </form>
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
+        <script src="js/config.js"></script>
         </div>
     </body>
     <script>
@@ -69,15 +70,16 @@
         })
         appcan.button(".btn", "ani-act", function() {
             var form = $('form');
-            appcan.request.postForm(form);
-            appcan.window.alert({
-                title : "提示",
-                content : "提问成功，请耐心等待回答！",
-                buttons : ['确定', '取消'],
-                callback : function(err, data, dataType, optId) {
-                }
+            appcan.request.post(ask_question_url, form, function() {
+                appcan.window.alert({
+                    title : "提示",
+                    content : "提问成功，请耐心等待回答！",
+                    buttons : ['确定', '取消'],
+                    callback : function(err, data, dataType, optId) {
+                    }
+                });
             });
-            
+
             return false;
         });
     </script>
