@@ -44,6 +44,7 @@
             }
         });
         appcan.button(".nav-btn", "btn-act", function() {
+            appcan.locStorage.remove();
             this.id && appcan.window.open('login', 'login.html', 10);
         });
         var tabview = appcan.tab({

@@ -27,7 +27,8 @@ function createUser(imei) {
             "imei" : imei
         },
         success : function(data) {
-            appcan.locStorage.setVal(data);
+            appcan.locStorage.setVal("username", data["username"]);
+            appcan.locStorage.setVal("password", data["password"]);
             appcan.window.confirm({
                 title : "修改密码",
                 content : "系统已为你随机分配了用户名和密码，如需在其他设备登录请在个人设置中修改用户名和密码",
@@ -64,12 +65,12 @@ function init() {
         return false;
     });
     // 获取设备IMEI
-    appcan.device.getInfo(11, function(err, data) {
-        if (err)
-            return;
+    appcan.device.getInfo(10, function(err, data) {
+        if (err) return;
+        data = JSON.parse(data);
         imei = data["imei"];
         if (!checkIsCreated(imei))
-            createUser();
+            createUser(imei);
     });
 
     username = appcan.locStorage.val("username");
@@ -81,6 +82,7 @@ function init() {
             "username" : username,
             "password" : password
         }, function(data) {
+            data = JSON.parse(data);
             status = data["status"];
             if (status == 0)
                 enter();
