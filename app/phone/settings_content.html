@@ -12,6 +12,8 @@
     </head>
     <body class="um-vp bc-bg" ontouchstart>
         <div class="uinn">
+            <div id="userInfo0" class="ubr ubl ubt bc-border"></div>
+            <br>
             <div id="listview0" class="ubr ubl ubt bc-border"></div>
             <br>
             <div id="listview1" class="ubr ubl ubt bc-border"></div>
@@ -23,11 +25,34 @@
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
         <script src="js/appcan.listview.js"></script>
+        <script src="js/config.js"></script>
     </body>
     <script>
         appcan.ready(function() {
 
         });
+        var listUser = appcan.listview({
+            selector : "#userInfo0",
+            type : "thinLine",
+            hasAngle : true,
+            hasControl : true,
+            hasSubTitle : true
+        });
+        var userCtlList = [{
+            title : "更改密码",
+            url : "setpass.html"
+        }, {
+            title : "更改用户名",
+            url : ""
+        }];
+        listUser.set(userCtlList);
+        listUser.on("click", function(obj,ele){
+            // alert(ele.title);
+            if (ele.url!="") {
+                appcan.openWinWithUrl("null", ele.url);
+            }
+        });
+        
         var lv0 = appcan.listview({
             selector : "#listview0",
             type : "thinLine",
