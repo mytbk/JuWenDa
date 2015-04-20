@@ -14,7 +14,7 @@
             标题
         </div>
         <div class="ansfrm">
-            <div id="answer" class="t-gra tx-l uinn ulh-a ulev-app1">
+            <div id="answer">
                 内容
             </div>
         </div>
@@ -28,7 +28,8 @@
             title = appcan.locStorage.val("title");
             $("#title").text(title);
             content = appcan.locStorage.val("content");
-            $("#answer").text(content);
+            $("#answer").empty();
+            $("#answer").append(content);
         })
     </script>
 </html>
