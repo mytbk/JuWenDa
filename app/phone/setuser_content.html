@@ -21,24 +21,24 @@
                         <div class="ub ub-ac umh5 bc-border ">
                             <div class=" uinput ub ub-f1">
                                 <div class="uinn fa fa-user sc-text"></div>
-                                <input name="old_username" placeholder="旧用户名" type="text" class="ub-f1">
+                                <input id="old_username" name="old_username" placeholder="旧用户名" type="text" class="ub-f1">
                             </div>
                         </div>
                         <div class="ub ub-ac umh5 bc-border">
                             <div class=" uinput ub ub-f1">
                                 <div class="uinn fa fa-user sc-text"></div>
-                                <input name="new_username" placeholder="新用户名" type="text" class="ub-f1">
+                                <input id="new_username" name="new_username" placeholder="新用户名" type="text" class="ub-f1">
                             </div>
                         </div>
                         <div class="ub ub-ac umh5 bc-border ">
                             <div class=" uinput ub ub-f1">
                                 <div class="uinn fa fa-lock sc-text"></div>
-                                <input name="password" placeholder="密码" type="password" class="umw4 ub-f1">
+                                <input id="password" name="password" placeholder="密码" type="password" class="umw4 ub-f1">
                             </div>
                         </div>
                     </div>
                     <div class="ub ub-ver">
-                       <div class="uinn-at1">
+                        <div class="uinn-at1">
                             <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1" id="submit">
                                 设置
                             </div>
@@ -56,6 +56,10 @@
     <script>
         appcan.ready(function() {
             appcan.initBounce();
+            username = appcan.locStorage.val("username");
+            password = appcan.locStorage.val("password");
+            $("#old_username").val(username);
+            $("#password").val(password);
         })
         appcan.button("#submit", "ani-act", function() {
             $("form").submit();
@@ -67,8 +71,10 @@
             appcan.request.postForm($("form"), function(data) {
                 // WIP: bug in Android virtual device
                 var ret = JSON.parse(data);
-                switch (ret.status) {
+                var st = ret["status"];
+                switch (st) {
                     case 0:
+                    appcan.locStorage.val("username", $("#new_username").val());
                     appcan.window.alert({
                         title : "提醒",
                         content : "操作成功！",
@@ -98,7 +104,7 @@
                         callback : function(err, data, dataType, optId) {
                             console.log(err, data, dataType, optId);
                         }
-                    });                   
+                    });
                 }
             }, function(err) {
                 appcan.window.alert({
