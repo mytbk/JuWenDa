@@ -42,7 +42,8 @@
 
 .ansfrm{
     margin: .8em .5em .8em .5em;
-    background-color: #AAFFFF;
+    word-wrap: break-word;
+    line-height: 200%;
 }
 .qtitle{
     font-size: 1.2em;
