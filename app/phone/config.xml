@@ -12,7 +12,7 @@
 	<showmyspace>false</showmyspace>
 	<obfuscation>true</obfuscation>
 	<bgcolor>#fefefe</bgcolor>
-	<orientation>15</orientation>
+	<orientation>1</orientation>
 <debug>false</debug>
 <partobfuscation/>
 <webapp/>
