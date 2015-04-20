@@ -51,12 +51,12 @@ function sendRequestWithDetailPage(link) {
     var resultData;
     appcan.request.get(url, function(data) {
         data = dealwithDetailPage(data);
-        data = data.replace(/<[^>]*>/g, "");
-        data = data.replace(/&nbsp;/g, " ");
-        data = data.replace(/&lt;/g, "<");
-        data = data.replace(/&gt;/g, ">");
-        data = data.replace(/&amp;/g, "&");
-        data = data.replace(/&quot;/g, "\"");
+        // data = data.replace(/<[^>]*>/g, "");
+        // data = data.replace(/&nbsp;/g, " ");
+        // data = data.replace(/&lt;/g, "<");
+        // data = data.replace(/&gt;/g, ">");
+        // data = data.replace(/&amp;/g, "&");
+        // data = data.replace(/&quot;/g, "\"");
         appcan.locStorage.val("content", data);
         appcan.openWinWithUrl("details","details.html");
     });

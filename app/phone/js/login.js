@@ -41,7 +41,28 @@ function createUser(imei) {
     });
 }
 
+function noticing()
+{
+    $("#register").on("click", function()
+    {
+        $("#input_exception").attr("class", "uhide");
+    })
+    $("#forget-password").on("click", function()
+    {
+        $("#input_exception").attr("class", "uhide");
+    })
+    $("#password").on("click", function()
+    {
+        $("#input_exception").attr("class", "uhide");
+    })
+    $("#username").on("click", function()
+    {
+        $("#input_exception").attr("class", "uhide");
+    })
+}
+
 function init() {
+    noticing();
     $("#login_form").hide();
     appcan.initBounce();
     appcan.button("#submit", "ani-act", function() {
@@ -58,8 +79,10 @@ function init() {
                 password = $("#password").attr("value");
                 appcan.locStorage.val("username", username);
                 appcan.locStorage.val("password", password);
+                $("#input_exception").attr("class", "uhide");
                 enter();
             } else {
+                $("#input_exception").attr("class", "ub t-blu umar-t ulev-2");
             }
         });
         return false;
@@ -85,9 +108,15 @@ function init() {
             data = JSON.parse(data);
             status = data["status"];
             if (status == 0)
+            {
+                $("#input_exception").attr("class", "uhide");
                 enter();
+            }
             else
+            {
                 $("#login_form").show();
+                $("#input_exception").attr("class", "ub t-blu umar-t ulev-2");
+            }
         });
     }
 }

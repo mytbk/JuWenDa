@@ -67,23 +67,51 @@
 
         $("form").on('submit', function() {
             this.action = set_username_url;
-
+            
             appcan.request.postForm($("form"), function(data) {
-                appcan.window.alert({
-                    title : "提醒",
-                    content : "您已经提交了表单:)",
-                    buttons : '确定',
-                    callback : function(err, data, dataType, optId) {
-                    }
-                });
-                
-                data = JSON.parse(data);
-                status = data["status"];
-                if (status == 0) {
+                // WIP: bug in Android virtual device
+                var ret = JSON.parse(data);
+                var st = ret["status"];
+                switch (st) {
+                    case 0:
                     appcan.locStorage.val("username", $("#new_username").val());
+                    appcan.window.alert({
+                        title : "提醒",
+                        content : "操作成功！",
+                        buttons : "确定"
+                    });
+                    appcan.window.close();
+                    break;
+                    case 1:
+                    appcan.window.alert({
+                        title : "错误",
+                        content : "旧密码错误！",
+                        buttons : "确定"
+                    });
+                    break;
+                    case 2:
+                    appcan.window.alert({
+                        title : "错误",
+                        content : "新用户名已存在或新用户名和旧用户名相同",
+                        buttons : "确定"
+                    });
+                    break;
+                    default:
+                    appcan.window.alert({
+                        title : "错误",
+                        content : "未知错误",
+                        buttons : "确定",
+                        callback : function(err, data, dataType, optId) {
+                            console.log(err, data, dataType, optId);
+                        }
+                    });
                 }
             }, function(err) {
-
+                appcan.window.alert({
+                    title : "错误",
+                    content: "提交表单错误！",
+                    buttons: "确定"
+                })
             });
             return false;
         });

@@ -4,7 +4,8 @@ function initIndex() {
     appcan.initBounce();
 
     appcan.button(".btn", "ani-act", function() {
-        sendRequestWithKey(1, "Object-C +函数和-函数有什么区别", listview);
+        question = $("#question").val();
+        sendRequestWithKey(1, question, listview);
     });
 
     listview = appcan.listview({

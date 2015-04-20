@@ -30,3 +30,4 @@ proguard/
 usersystem/.idea/
 usersystem/__pycache__/
 usersystem/db.sqlite3
+*.project
