@@ -64,6 +64,8 @@ function noticing()
 function init() {
     noticing();
     $("#login_form").hide();
+    $("#loading_wait").attr("class", ""); // show loading
+    
     appcan.initBounce();
     appcan.button("#submit", "ani-act", function() {
         $("form").submit();
@@ -99,6 +101,7 @@ function init() {
     username = appcan.locStorage.val("username");
     password = appcan.locStorage.val("password");
     if (username == null || password == null) {
+        $("#loading_wait").attr("class", "uhide");
         $("#login_form").show();
     } else {
         appcan.request.post(authenticate_user_url, {
@@ -114,6 +117,7 @@ function init() {
             }
             else
             {
+                $("#loading_wait").attr("class", "uhide");
                 $("#login_form").show();
                 $("#input_exception").attr("class", "ub t-blu umar-t ulev-2");
             }
