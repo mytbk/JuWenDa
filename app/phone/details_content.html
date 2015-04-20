@@ -10,42 +10,25 @@
         <link rel="stylesheet" href="details_content/css/main.css">
     </head>
     <body class="ub um-vp c-wh2 ub-ver uinn" style="margin:0 0.8em 0 0.8em;" ontouchstart>
-        <div class="t-bg tx-l uinn qtitle" >
-            C#中out参数有什么用法？
+        <div id="title" class="t-bg tx-l uinn qtitle" >
+            标题
         </div>
         <div class="ansfrm">
-            <div class="t-gra tx-l ulev-1 uinn" style="border-bottom:1px solid#ffffff;">
-                我的回答
-            </div>
-
-            <div class="t-gra tx-l uinn ulh-a ulev-app1">
-                &nbsp&nbspout参数是用来存放多于一个参数的。
-            </div>
-        </div>
-        <div class="ansfrm">
-            <div class="t-gra tx-l ulev-1 uinn" style="border-bottom:1px solid#ffffff;">
-                我的回答
-            </div>
-
-            <div class="t-gra tx-l uinn ulh-a ulev-app1">
-                &nbsp&nbspout参数是用来存放多于一个参数的。
-            </div>
-        </div>
-        <div class="ansfrm">
-            <div class="t-gra tx-l ulev-1 uinn" style="border-bottom:1px solid#ffffff;">
-                我的回答
-            </div>
-
-            <div class="t-gra tx-l uinn ulh-a ulev-app1">
-                &nbsp&nbspout参数是用来存放多于一个参数的。
+            <div id="answer" class="t-gra tx-l uinn ulh-a ulev-app1">
+                内容
             </div>
         </div>
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
+        <script src="js/details.js"></script>
     </body>
     <script>
         appcan.ready(function() {
             appcan.initBounce();
+            title = appcan.locStorage.val("title");
+            $("#title").text(title);
+            content = appcan.locStorage.val("content");
+            $("#answer").text(content);
         })
     </script>
 </html>
