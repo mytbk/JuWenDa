@@ -85,7 +85,7 @@ function init() {
                 password = $("#password").attr("value");
                 appcan.locStorage.val("username", username);
                 appcan.locStorage.val("password", password);
-                $("#input_exception").attr("class", "uhide");
+                //$("#input_exception").attr("class", "uhide");
                 enter();
             } else {
                 $("#loading_wait").attr("class", "uhide"); //hide loading
