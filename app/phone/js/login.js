@@ -72,6 +72,10 @@ function init() {
     })
     // 初始化提交按钮
     $("form").on('submit', function() {
+        
+        $("#login_form").hide();// hide
+        $("#loading_wait").attr("class", "");//loading
+        
         $("#login_form").attr("action", authenticate_user_url);
         appcan.request.postForm($("form"), function(data) {
             data = JSON.parse(data);
@@ -84,6 +88,8 @@ function init() {
                 $("#input_exception").attr("class", "uhide");
                 enter();
             } else {
+                $("#loading_wait").attr("class", "uhide"); //hide loading
+                $("#login_form").show();// show the form
                 $("#input_exception").attr("class", "ub t-blu umar-t ulev-2");
             }
         });
