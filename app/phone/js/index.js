@@ -17,12 +17,7 @@ function initIndex() {
         multiLine : 1,
     });
 
-    data = [{
-            title : "你在阅读源代码或设计文档时，看到哪些惊艳的技巧？",
-            describe : "提两个C语言里实现列表用到的技巧。会用的人可能会觉得很平常，但是第一次看到的时候还是觉得很厉害的：两级指针：两级指针要怎么用呢？",
-            note : "知乎",
-            icon : "index_content/css/myImg/newsImg3.png"
-        }];
+    data = [];
 
     listview.set(data);
 

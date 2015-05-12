@@ -7,8 +7,8 @@ function sendRequestWithKey(page, key, listview) {
     var resultData = [];
     appcan.request.get(url, function(data) {
         data = dealwithResult(data);
-        listview.set(data);
-        
+        appcan.locStorage.val('list',data);
+        appcan.openWinWithUrl("searchresult", "searchresult.html");
     });
 }
 
