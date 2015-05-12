@@ -12,10 +12,9 @@
     </head>
     <body class="um-vp bc-bg ub-ver" ontouchstart>
         <div class="ub ub-ver">
-            <div id="listview">
-            </div>
+            <div id="listview"></div>
         </div>
-        
+
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
         <script src="js/appcan.slider.js"></script>
@@ -23,24 +22,24 @@
     </body>
     <script>
         appcan.ready(function() {
-            //appcan.initBounce();
-        })        
-        
-        var updateData;
-        updateData = appcan.locStorage.val('list');
-        
-        var lv1 = appcan.listview({
-            selector : "#listview",
-            type : "thickLine",
-            hasIcon : true,
-            hasAngle : false
-        });
-        lv1.set(updateData);
 
-        lv1.on('click', function(ele, context, obj, subobj) {
-            var question = obj['title'];
-            appcan.locStorage('title', obj[title]);
-            appcan.openWinWithUrl('details', 'details.html');
+            var updateData;
+            updateData = appcan.locStorage.val("list");
+
+            var lv1 = appcan.listview({
+                selector : "#listview",
+                type : "thickLine",
+                hasIcon : true,
+                hasAngle : false
+            });
+            lv1.set(updateData);
+
+            lv1.on('click', function(ele, context, obj, subobj) {
+                var question = obj['title'];
+                appcan.locStorage('title', obj[title]);
+                appcan.openWinWithUrl('details', 'details.html');
+            })
         })
+
     </script>
 </html>

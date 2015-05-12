@@ -5,7 +5,8 @@ function sendRequestWithKey(page, key, listview) {
         "username" : username
     }, function(data) {
         data = dealwithResult(data);
-        listview.set(data);
+        appcan.locStorage.val("list", data);
+        appcan.openWinWithUrl("searchresult","searchresult.html");
     });
 }
 

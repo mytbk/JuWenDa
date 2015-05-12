@@ -17,15 +17,19 @@ function initIndex() {
         multiLine : 1,
     });
 
-    data = [];
+    data = [{
+            title : "输入想问的问题之后，您会得到以下结果！",
+            describe : "请点击以获得更多信息！",
+            note : "样例",
+        }];
 
     listview.set(data);
 
-    listview.on("click", function(ele, obj, curEle) {
-        var url = obj["id"];
-        appcan.locStorage.val("title", obj["title"]);
-        sendRequestWithDetailPage(url);
-    });
+//    listview.on("click", function(ele, obj, curEle) {
+//        var url = obj["id"];
+//        appcan.locStorage.val("title", obj["title"]);
+//        sendRequestWithDetailPage(url);
+//    });
     initBounce();
 }
 

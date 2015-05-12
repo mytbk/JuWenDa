@@ -23,7 +23,7 @@
                 <div class="nav-btn" id="nav-right"></div>
             </div>
             <div id="content" class="ub-f1 tx-l"></div>
-            <div class="btn ub ub-ac bc-text-head ub-pc bc-btn"  id="btn">
+            <div class="uf btn ub ub-ac bc-text-head ub-pc bc-btn"  id="btn">
                 对结果不满意？点这里发布您的问题吧！
             </div>
 
@@ -35,19 +35,19 @@
     </body>
     <script>
         appcan.ready(function() {
-            titHeight = $('#header').offset().height;
-            appcan.frame.open("searchresult_content", "searchresult_content.html", 0, titHeight);
-            window.onorientationchange = window.onresize = function() {
-                appcan.frame.resize("content", 0, titHeight);
-            }
 
-            appcan.button(".nav-btn", "btn-act", function(a, b) {
-                appcan.closeWin(-1);
-            });
+        });
+        titHeight = $('#header').offset().height;
+        appcan.frame.open("searchresult_content", "searchresult_content.html", 0, titHeight);
+        window.onorientationchange = window.onresize = function() {
+            appcan.frame.resize("content", 0, titHeight);
+        }
+        appcan.button(".nav-btn", "btn-act", function(a, b) {
+            appcan.closeWin(-1);
+        });
 
-            appcan.button(".btn", "ani-act", function() {
-                appcan.openWinWithUrl("asking", "asking.html");
-            });
+        appcan.button(".btn", "ani-act", function() {
+            appcan.openWinWithUrl("asking", "asking.html");
         });
     </script>
 </html>
