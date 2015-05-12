@@ -32,6 +32,15 @@ class Search(models.Model):
 	title = models.TextField(default="")
 	user = models.ForeignKey(User)
 
+
+class Answer(models.Model):
+	link = models.URLField()
+	good = models.IntegerField()
+
+
 class UserModel(models.Model):
 	user = models.OneToOneField(User)
 	imei = models.TextField(default="")
+	voteAnswers = models.ManyToManyField(Answer)
+
+

@@ -14,8 +14,8 @@ function searchresult() {
     lv1.set(updateData);
 
     lv1.on('click', function(ele, context, obj, subobj) {
-        var question = obj['title'];
-        appcan.locStorage('title', obj[title]);
+        var question = obj[0];
+        appcan.locStorage.val('title', question);
         appcan.openWinWithUrl('details', 'details.html');
     })
 }

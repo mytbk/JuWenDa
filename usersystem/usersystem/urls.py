@@ -12,5 +12,6 @@ urlpatterns = patterns(
 	url(r'^askQuestion$', views.ask_question, name='askQuestion'),
 	url(r'^searchAnswer$', views.search_answer, name='searchAnswer'),
 	url(r'^getDetail$', views.get_detail, name='getDetail$'),
+	url(r'^upVote$', views.up_vote, name='upVote$'),
 	url(r'^admin/', include(admin.site.urls)),
 )
