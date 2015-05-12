@@ -17,7 +17,7 @@
             <!--header开始-->
             <div id="header" class="uh bc-text-head ub bc-head">
                 <div class="nav-btn" id="nav-left"></div>
-                <h1 class="ut ub-f1 ulev1 ut-s tx-c" tabindex="0">聚问答</h1>
+                <h1 class="ut ub-f1 ulev0 ut-s tx-c" tabindex="0">聚问答</h1>
                 <div class="nav-btn nav-bt" id="nav-right">
                     <div class="fa fa-plus ulev1"></div>
                 </div>
@@ -45,8 +45,15 @@
             }
         });
         appcan.button(".nav-btn", "btn-act", function() {
+            appcan.window.alert({
+                title : "提示",
+                content : "您是否要注销登陆？",
+                buttons : ['确定', '取消'],
+                callback : function(err, data, dataType, optId) {
+                    console.log(err, data, dataType, optId);
+                }
+            });
             appcan.locStorage.remove();
-            this.id && appcan.window.open('asking', 'asking.html', 10);
         });
         var tabview = appcan.tab({
             selector : "#tabview",

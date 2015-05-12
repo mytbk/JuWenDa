@@ -35,19 +35,21 @@
     </body>
     <script>
         appcan.ready(function() {
+            appcan.initBounce();
 
-        });
-        titHeight = $('#header').offset().height;
-        appcan.frame.open("searchresult_content", "searchresult_content.html", 0, titHeight);
-        window.onorientationchange = window.onresize = function() {
-            appcan.frame.resize("content", 0, titHeight);
-        }
-        appcan.button(".nav-btn", "btn-act", function(a, b) {
-            appcan.closeWin(-1);
-        });
+            var titHeight = $('#header').offset().height;
+            var cntHeight = $('#content').offset().height;
 
-        appcan.button(".btn", "ani-act", function() {
-            appcan.openWinWithUrl("asking", "asking.html");
+            appcan.frame.open("content", "searchresult_content.html", 0, titHeight);
+            window.onorientationchange = window.onresize = function() {
+                appcan.frame.resize("content", 0, titHeight);
+            }
+            appcan.button(".nav-btn", "btn-act", function(a, b) {
+                appcan.closeWin(-1);
+            });
+            appcan.button(".btn", "ani-act", function() {
+                appcan.openWinWithUrl("asking", "asking.html");
+            });
         });
     </script>
 </html>

@@ -6,7 +6,6 @@ function sendRequestWithKey(page, key, listview) {
     }, function(data) {
         data = dealwithResult(data);
         appcan.locStorage.val("list", data);
-        appcan.openWinWithUrl("searchresult","searchresult.html");
     });
 }
 
