@@ -12,14 +12,14 @@
         <link rel="stylesheet" href="css/appcan.control.css"/>
         <link rel="stylesheet" href="index/main.css"/>
     </head>
-    <body class="um-vp " ontouchstart>
-        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+    <body class="um-vp" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
             <!--header开始-->
             <div id="header" class="uh bc-text-head ub bc-head">
                 <div class="nav-btn" id="nav-left"></div>
-                <h1 class="ut ub-f1 ulev-3 ut-s tx-c" tabindex="0">聚问答</h1>
+                <h1 class="ut ub-f1 ulev1 ut-s tx-c" tabindex="0">聚问答</h1>
                 <div class="nav-btn nav-bt" id="nav-right">
-                    <div class="fa fa-power-off ulev1"></div>
+                    <div class="fa fa-plus ulev1"></div>
                 </div>
             </div>
             <!--header结束--><!--content开始-->
@@ -27,7 +27,7 @@
 
             </div>
             <!--content结束-->
-            <div id="tabview" class="uf sc-bg ubt sc-border-tab"></div>
+            <div id="tabview" class="uf sc-bg-active"></div>
 
         </div>
         <script src="js/appcan.js"></script>
@@ -46,7 +46,7 @@
         });
         appcan.button(".nav-btn", "btn-act", function() {
             appcan.locStorage.remove();
-            this.id && appcan.window.open('login', 'login.html', 10);
+            this.id && appcan.window.open('asking', 'asking.html', 10);
         });
         var tabview = appcan.tab({
             selector : "#tabview",
@@ -56,17 +56,14 @@
             hasBadge : true,
             data : [{
                 label : "搜索问题",
-                "icon" : "fa-eye"
-            }, {
-                label : "提出问题",
-                "icon" : "fa-question"
+                "icon" : "fa-search"
             }, {
                 label : "我的问题",
-                "icon" : "fa-github",
+                "icon" : "fa-file",
                 //   badge:1
             }, {
                 label : "账户设置",
-                "icon" : "fa-child",
+                "icon" : "fa-gear",
                 //   badge:1
             }]
         });
@@ -76,13 +73,13 @@
             case 0:
                 appcan.frame.open("content", "index_content.html", 0, titHeight);
                 return;
+            //case 1:
+            //    appcan.frame.open("content", "asking_content.html", 0, titHeight);
+            //    return;
             case 1:
-                appcan.frame.open("content", "asking_content.html", 0, titHeight);
-                return;
-            case 2:
                 appcan.frame.open("content", "questions_content.html", 0, titHeight);
                 return;
-            case 3:
+            case 2:
                 appcan.frame.open("content", "settings_content.html", 0, titHeight);
                 return;
             }
