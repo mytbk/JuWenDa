@@ -28,6 +28,10 @@ class QuestionUrl(models.Model):
 	url = models.URLField()
 
 
+class Search(models.Model):
+	title = models.TextField(default="")
+	user = models.ForeignKey(User)
+
 class UserModel(models.Model):
 	user = models.OneToOneField(User)
 	imei = models.TextField(default="")

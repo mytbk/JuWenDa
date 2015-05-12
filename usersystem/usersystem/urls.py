@@ -10,5 +10,7 @@ urlpatterns = patterns(
 	url(r'^setPassword$', views.set_password, name='setPassword'),
 	url(r'^setUsername$', views.set_username, name='setUsername'),
 	url(r'^askQuestion$', views.ask_question, name='askQuestion'),
+	url(r'^searchAnswer$', views.search_answer, name='searchAnswer'),
+	url(r'^getDetail$', views.get_detail, name='getDetail$'),
 	url(r'^admin/', include(admin.site.urls)),
 )

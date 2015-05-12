@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from usersystem.models import UserModel
+from usersystem.models import UserModel, Search
 from usersystem.utils import call_api, http_get
 
 
@@ -137,6 +137,56 @@ def set_username(request):
 
 
 @csrf_exempt
+def search_answer(request):
+	"""
+	搜索问题
+	前置条件
+		该接口要求POST请求
+	参数
+		"title": 问题标题
+		"username": 用户名
+	返回数据
+		见燕风API
+	"""
+	title = request.POST["title"]
+	username = request.POST["username"]
+	user = User.objects.get(username=username)
+	search = Search()
+	search.user = user
+	search.title = title
+	search.save()
+	result = call_api({
+	"iw-apikey": 123,
+	"iw-cmd": "search",
+	"p": 1,
+	"q": title
+	})
+	data = json.loads(result)
+	return JsonResponse(data)
+
+
+@csrf_exempt
+def get_detail(request):
+	"""
+	获得详细结果页面
+	前置条件
+		该接口要求POST请求
+	参数
+		"link": 详细页面URL
+	返回数据
+		见燕风API
+	"""
+	link = request.POST["link"]
+	result = call_api({
+	"iw-apikey": 123,
+	"iw-cmd": "resultcontent",
+	"iw_ir_1": link
+	})
+	data = json.loads(result)
+	return JsonResponse(data)
+
+
+@csrf_exempt
 def ask_question(request):
 	"""
 	提出问题
@@ -162,48 +212,24 @@ def ask_question_at_csdn(title, description):
 	"iw-apikey": 123,
 	"iw-cmd": "getloginlt"
 	})
-	print(login_lt)
 	login_lt = json.loads(login_lt)
-	print(login_lt)
 	login_lt = login_lt["iw-response"]["iw-object"]["lt"]
-	print(login_lt)
 	# 登录
-	result = http_get("http://app.internetware.cn/jwd/?iw-apikey=123&iw-cmd=login&username=ju_wen_da@163.com&password=ju_wen_da&lt=" + login_lt)
+	result = call_api({
+	"iw-apikey": 123,
+	"iw-cmd": "login",
+	"username": "ju_wen_da@163.com",
+	"password": "ju_wen_da",
+	"lt": login_lt
+	})
 	print("login result: " + result)
-	# 获取提交token
-	token = http_get("http://app.internetware.cn/jwd/?iw-apikey=1234&iw-cmd=gettoken")
-	print("get token result: " + token)
-	# # 获取验证码key
-	# captchas_key = call_api({
-	# "iw-apikey": 1234,
-	# "iw-cmd": "newcaptchas"
-	# })
-	# print("get captchas")
-	# # 获取验证码
-	# captcha = call_api({
-	# "iw-apikey": 1234,
-	# "iw-cmd": "getcaptchas",
-	# "code": captchas_key
-	# })
-	# print("get catalogue")
-	# # 获取板块信息
-	# call_api({
-	# "iw-apikey": 1234,
-	# "iw-cmd": "getcatalogue"
-	# })
-	# print("post")
-	# # 发布问题
-	# post_url = call_api({
-	# "iw-apikey": 1234,
-	# "iw-cmd": "post",
-	# "captcha_key": captchas_key,
-	# "captcha": captcha,
-	# "topic[forum_id]": "Enterprise_Other",
-	# "topic[body]": description,
-	# "topic[title]": title,
-	# "topic[point]": 0,
-	# "topic[cached_tag_list]": "",
-	# "topic[invitation_usernames][]": "",
-	# "authenticity_token": token
-	# })
-	# print(post_url)
+	# 提问
+	result = call_api({
+	"iw-apikey": 123,
+	"iw-cmd": "question",
+	"question[is_reward]": "false",
+	"question[tag_list]": "",
+	"question[body]": description,
+	"question[title]": title,
+	"question[from_type]": "ask.csdn.net"
+	})
