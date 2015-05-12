@@ -5,8 +5,11 @@ function sendRequestWithKey(page, key, listview) {
         "username" : username
     }, function(data) {
         data = dealwithResult(data);
-        appcan.locStorage.val("list", data);
+
+        appcan.locStorage.val("resultlist", data);
+        appcan.openWinWithUrl("searchresult", "searchresult.html");
     });
+
 }
 
 function dealwithResult(data) {
@@ -48,7 +51,7 @@ function dealwithResult(data) {
 
 function sendRequestWithDetailPage(link) {
     link = link.replace(/http:\/\/blog.csdn.net/, "");
-    
+
     appcan.request.post(get_detail_url, {
         "link" : link
     }, function(data) {

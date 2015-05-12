@@ -6,7 +6,6 @@ function initIndex() {
     appcan.button(".btn", "ani-act", function() {
         question = $("#question").val();
         sendRequestWithKey(1, question, listview);
-        appcan.openWinWithUrl("searchresult", "searchresult.html");
     });
 
     listview = appcan.listview({
@@ -31,10 +30,10 @@ function initIndex() {
     //        appcan.locStorage.val("title", obj["title"]);
     //        sendRequestWithDetailPage(url);
     //    });
-    initBounce();
+    Bounce();
 }
 
-function initBounce(funcTop, funcBottom) {
+function Bounce(funcTop, funcBottom) {
     uexWindow.setBounce("1");
     if (!funcTop && !funcBottom) {
         uexWindow.showBounceView("0", "rgba(255,255,255,0)", "0");
