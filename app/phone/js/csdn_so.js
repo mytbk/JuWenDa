@@ -7,9 +7,23 @@ function sendRequestWithKey(page, key, listview) {
         data = dealwithResult(data);
 
         appcan.locStorage.val("resultlist", data);
+        uexLoadingView.close();
         appcan.openWinWithUrl("searchresult", "searchresult.html");
     });
-
+    /*var jsonstr = {
+        "x" : 200,
+        "y" : 500,
+        "w" : 240,
+        "h" : 40,
+        "style" : {
+            "styleId" : 0,
+            "pointNum" : 4,
+            "pointColor" : ["#ff4444", "#ffbb33", "#99cc00", "#33b5e5"]
+        }
+    };
+    
+    uexLoadingView.open(jsonstr);
+*/
 }
 
 function dealwithResult(data) {
