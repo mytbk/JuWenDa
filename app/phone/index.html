@@ -19,7 +19,7 @@
                 <div class="nav-btn" id="nav-left"></div>
                 <h1 class="ut ub-f1 ulev0 ut-s tx-c" tabindex="0">聚问答</h1>
                 <div class="nav-btn nav-bt" id="nav-right">
-                    <div class="fa fa-plus ulev1"></div>
+                    <div class="fa fa-power-off ulev1"></div>
                 </div>
             </div>
             <!--header结束--><!--content开始-->
@@ -50,10 +50,9 @@
                 content : "您是否要注销登陆？",
                 buttons : ['确定', '取消'],
                 callback : function(err, data, dataType, optId) {
-                    console.log(err, data, dataType, optId);
+                    appcan.locStorage.remove();
                 }
             });
-            appcan.locStorage.remove();
         });
         var tabview = appcan.tab({
             selector : "#tabview",
@@ -84,6 +83,12 @@
             //    appcan.frame.open("content", "asking_content.html", 0, titHeight);
             //    return;
             case 1:
+                username = appcan.locStorage.val("username");
+                /*appcan.request.post(myquestion_url, {
+                    "username" : username
+                }, function(data) {
+                    appcan.locStorage.val("myquestion", data);
+                });*/
                 appcan.frame.open("content", "questions_content.html", 0, titHeight);
                 return;
             case 2:
