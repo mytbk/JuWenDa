@@ -11,50 +11,83 @@
         <link rel="stylesheet" href="css/appcan.icon.css">
         <link rel="stylesheet" href="css/appcan.control.css">
         <link rel="stylesheet" href="asking_content/css/main.css">
-    </head class="um-vp bc-bg">
-    <body>
-        <form name="form">
-            <div class="inques">
-                <div class="ulim uinn tx-l">输入问题</div>
-                <div class="uba uc-a1 b-col1 us-i uinput uinn4">
-                    <input placeholder="输入问题" type="text" class="uc-a2" name="title">
+        </head class="um-vp bc-bg">
+        <body>
+            <form name="form">
+                <div class="inques ub ub-ver">
+                    <div class="ulim uinn tx-l">
+                        输入问题
+                    </div>
+                    <div class="uba uc-a1 b-col1 us-i uinput uinn4">
+                        <input placeholder="输入问题" type="text" class="uc-a2" name="title">
+                    </div>
                 </div>
-            </div>
-            <div class="desques">
-                <div class="ulim uinn tx-l">问题描述</div>
-                <div class="uba uc-a1 b-col1 us-i uinput uinn4">
-                    <textarea placeholder="问题描述" type="text" class="uc-a1" name="description"></textarea>
+                <br>
+                <div class="desques ub ub-ver">
+                    <div class="ulim uinn tx-l">
+                        问题描述
+                    </div>
+                    <div class="uba uc-a1 b-col1 us-i uinput uinn4">
+                        <textarea placeholder="问题描述" type="text" class="uc-a1" name="description"></textarea>
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="sbmt">
-                <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1"  id="btn">
-                    <div class="uinn3 icon-map ub-img umh1 umw1"></div>
-                    提交
-                </div>
-        </form>
-        <script src="js/appcan.js"></script>
-        <script src="js/appcan.control.js"></script>
-        <script src="js/config.js"></script>
-        </div>
-    </body>
-    <script>
-        appcan.ready(function() {
-            appcan.initBounce();
-        })
-        appcan.button(".btn", "ani-act", function() {
-            var form = $('form');
-            appcan.request.post(ask_question_url, form, function() {
-                appcan.window.alert({
-                    title : "提示",
-                    content : "提问成功，请耐心等待回答！",
-                    buttons : ['确定', '取消'],
-                    callback : function(err, data, dataType, optId) {
-                    }
-                });
-            });
+                <br>
+                <div class="categ ub ub-ver">
+                    <div class="ub ub-ac">
+                        <div class="radiobox" name="tag">
+                            <input type="radio" class="uabs ub-con" name="lv_radio">
+                        </div>
+                        <div class="ulim uinn tx-l">
+                            编程
+                        </div>
+                    </div>
+                    <div class="ub ub-ac">
+                        <div class="radiobox" name="tag">
+                            <input type="radio" class="uabs ub-con" name="lv_radio">
+                        </div>
+                        <div class="ulim uinn tx-l">
+                            数学
+                        </div>
+                    </div>
+                    <div class="ub ub-ac">
+                        <div class="radiobox" name="tag">
+                            <input type="radio" class="uabs ub-con" name="lv_radio">
+                        </div>
+                        <div class="ulim uinn tx-l">
+                            留学
+                        </div>
+                    </div>
 
-            return false;
-        });
-    </script>
+                </div>
+                <br>
+                <div class="sbmt ub ub-ver">
+                    <div class="btn ub ub-ac bc-text-head ub-pc bc-btn uc-a1"  id="btn">
+                        <div class="uinn3 icon-map ub-img umh1 umw1"></div>
+                        提交
+                    </div>
+            </form>
+            <script src="js/appcan.js"></script>
+            <script src="js/appcan.control.js"></script>
+            <script src="js/config.js"></script>
+            </div>
+        </body>
+        <script>
+            appcan.ready(function() {
+                appcan.initBounce();
+            })
+            appcan.button(".btn", "ani-act", function() {
+                var form = $('form');
+                appcan.request.post(ask_question_url, form, function() {
+                    appcan.window.alert({
+                        title : "提示",
+                        content : "提问成功，请耐心等待回答！",
+                        buttons : ['确定'],
+                        callback : function(err, data, dataType, optId) {
+                        }
+                    });
+                });
+
+                return false;
+            });
+        </script>
 </html>
