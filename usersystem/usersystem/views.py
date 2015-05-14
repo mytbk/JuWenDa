@@ -1,10 +1,11 @@
 import random, string, json
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from django.http import JsonResponse, HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from usersystem.models import UserModel, Search
-from usersystem.utils import call_api, http_get
+from usersystem.models import UserModel, Search, Answer
+from usersystem.utils import call_api
 
 
 @csrf_exempt
@@ -151,9 +152,7 @@ def search_answer(request):
 	title = request.POST["title"]
 	username = request.POST["username"]
 	user = User.objects.get(username=username)
-	search = Search()
-	search.user = user
-	search.title = title
+	search = Search(title=title, user=user)
 	search.save()
 	result = call_api({
 	"iw-apikey": 123,
@@ -162,6 +161,7 @@ def search_answer(request):
 	"q": title
 	})
 	data = json.loads(result)
+	print(data)
 	return JsonResponse(data)
 
 
@@ -201,8 +201,56 @@ def ask_question(request):
 		0: 操作成功
 		1: 操作失败
 	"""
-	ask_question_at_csdn("appcan获取imei失败", "appcan获取imei失败")
-	return HttpResponse("")
+	if ask_question_at_csdn("appcan如何获取", "appcan获取imei失败"):
+		return JsonResponse({"status": "0"})
+	return JsonResponse({"status": "1"})
+
+
+@csrf_exempt
+def up_vote(request):
+	"""
+	赞同或取消赞同答案。如果用户对该答案未点赞，则赞同；反之取消赞同。
+	前置条件
+		该接口要求POST请求
+	参数
+		"link": 答案的URL
+		"username": 用户名
+	返回数据
+		无
+	"""
+	username = request.POST["username"]
+	link = request.POST["link"]
+	user = User.objects.get(username=username)
+	userModel = user.usermodel
+	try:
+		answer = userModel.voteAnswers.get(link=link)
+		answer.good = answer.good - 1
+		answer.save()
+	except ObjectDoesNotExist:
+		answer = Answer(link=link, good=1)
+		answer.save()
+		userModel.voteAnswers.add(answer)
+		userModel.save()
+	return JsonResponse("")
+
+
+@csrf_exempt
+def get_vote(request):
+	"""
+	获取答案赞同数
+	前置条件
+		该接口要求POST请求
+	参数
+		"link": 答案的URL
+	返回数据
+		"good": 答案的赞同数
+	"""
+	link = request.POST["link"]
+	try:
+		answer = Answer.get(link=link)
+		return JsonResponse({"good": answer.good})
+	except ObjectDoesNotExist:
+		return JsonResponse({"good": 0})
 
 
 def ask_question_at_csdn(title, description):
@@ -233,3 +281,6 @@ def ask_question_at_csdn(title, description):
 	"question[title]": title,
 	"question[from_type]": "ask.csdn.net"
 	})
+	data = json.loads(result)
+	data = data["iw-response"]["iw-object"]["responseResultStr"]
+	return "添加问题成功" in data

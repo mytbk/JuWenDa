@@ -1,6 +1,6 @@
 
-//server_url = "http://127.0.0.1:8000";
-server_url = "http://192.168.100.49:8000";
+server_url = "http://127.0.0.1:8000";
+//server_url = "http://192.168.100.49:8000";
 
 is_created_url = server_url + "/isCreated";
 create_user_url = server_url + "/createUser";
@@ -10,4 +10,6 @@ set_username_url =  server_url + "/setUsername";
 ask_question_url =  server_url + "/askQuestion";
 search_answer_url =  server_url + "/searchAnswer";
 get_detail_url =  server_url + "/getDetail";
-myquestion_url = server_url + "myQuestion";
+up_vote_url =  server_url + "/upVote";
+get_vote_url =  server_url + "/getVote";
+my_question_url = server_url + "/myQuestion";
