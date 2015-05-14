@@ -10,3 +10,5 @@ set_username_url =  server_url + "/setUsername";
 ask_question_url =  server_url + "/askQuestion";
 search_answer_url =  server_url + "/searchAnswer";
 get_detail_url =  server_url + "/getDetail";
+up_vote_url =  server_url + "/upVote";
+get_vote_url =  server_url + "/getVote";

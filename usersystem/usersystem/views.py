@@ -2,10 +2,10 @@ import random, string, json
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from usersystem.models import UserModel, Search
-from usersystem.utils import call_api, http_get
+from usersystem.models import UserModel, Search, Answer
+from usersystem.utils import call_api
 
 
 @csrf_exempt
@@ -213,7 +213,7 @@ def up_vote(request):
 	前置条件
 		该接口要求POST请求
 	参数
-		"link": 回答的URL
+		"link": 答案的URL
 		"username": 用户名
 	返回数据
 		无
@@ -221,11 +221,36 @@ def up_vote(request):
 	username = request.POST["username"]
 	link = request.POST["link"]
 	user = User.objects.get(username=username)
+	userModel = user.usermodel
 	try:
-		answer = user.usermodel.voteAnswers.get(link=link)
+		answer = userModel.voteAnswers.get(link=link)
 		answer.good = answer.good - 1
+		answer.save()
 	except ObjectDoesNotExist:
-		pass
+		answer = Answer(link=link, good=1)
+		answer.save()
+		userModel.voteAnswers.add(answer)
+		userModel.save()
+	return JsonResponse("")
+
+
+@csrf_exempt
+def get_vote(request):
+	"""
+	获取答案赞同数
+	前置条件
+		该接口要求POST请求
+	参数
+		"link": 答案的URL
+	返回数据
+		"good": 答案的赞同数
+	"""
+	link = request.POST["link"]
+	try:
+		answer = Answer.get(link=link)
+		return JsonResponse({"good": answer.good})
+	except ObjectDoesNotExist:
+		return JsonResponse({"good": 0})
 
 
 def ask_question_at_csdn(title, description):

@@ -13,5 +13,6 @@ urlpatterns = patterns(
 	url(r'^searchAnswer$', views.search_answer, name='searchAnswer'),
 	url(r'^getDetail$', views.get_detail, name='getDetail$'),
 	url(r'^upVote$', views.up_vote, name='upVote$'),
+	url(r'^getVote$', views.get_vote, name='getVote$'),
 	url(r'^admin/', include(admin.site.urls)),
 )
