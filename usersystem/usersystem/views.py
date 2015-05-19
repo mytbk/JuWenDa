@@ -160,8 +160,6 @@ def search_answer(request):
 	"p": 1,
 	"q": title
 	})
-	data = json.loads(result)
-	print(data)
 	return JsonResponse(data)
 
 
@@ -183,6 +181,7 @@ def get_detail(request):
 	"iw_ir_1": link
 	})
 	data = json.loads(result)
+	print(data)
 	return JsonResponse(data)
 
 
@@ -201,7 +200,10 @@ def ask_question(request):
 		0: 操作成功
 		1: 操作失败
 	"""
-	if ask_question_at_csdn("appcan如何获取", "appcan获取imei失败"):
+	title = request.POST["title"]
+	description = request.POST["description"]
+	tag = request.POST["tag"]
+	if ask_question_at_csdn(title, description):
 		return JsonResponse({"status": "0"})
 	return JsonResponse({"status": "1"})
 
@@ -254,6 +256,7 @@ def get_vote(request):
 
 
 def ask_question_at_csdn(title, description):
+	"""
 	print("getlt")
 	# 获取lt
 	login_lt = call_api({
@@ -271,6 +274,7 @@ def ask_question_at_csdn(title, description):
 	"lt": login_lt
 	})
 	print("login result: " + result)
+	"""
 	# 提问
 	result = call_api({
 	"iw-apikey": 123,
@@ -281,6 +285,7 @@ def ask_question_at_csdn(title, description):
 	"question[title]": title,
 	"question[from_type]": "ask.csdn.net"
 	})
+	print("Ask result: " + result)
 	data = json.loads(result)
 	data = data["iw-response"]["iw-object"]["responseResultStr"]
 	return "添加问题成功" in data
