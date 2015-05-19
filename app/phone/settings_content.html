@@ -18,8 +18,6 @@
             <br>
             <div id="listview1" class="ubr ubl ubt bc-border"></div>
             <br>
-            <div id="listview2" class="ubr ubl ubt bc-border"></div>
-            <br>
             <div id="listview3" class="ubr ubl ubt bc-border"></div>
         </div>
         <script src="js/appcan.js"></script>
@@ -65,10 +63,7 @@
         }, {
             title : "字体设置",
             subTitle : "系统字体"
-        }, {
-            title : "正文字号",
-            subTitle : "中"
-        }, {
+        },{
             title : "正文全屏",
             switchBtn : {
                 mini : true,
@@ -90,24 +85,6 @@
                 mini : true,
                 value : false
             }
-        }, {
-            title : "重要消息气泡提醒",
-            switchBtn : {
-                mini : true,
-                value : true
-            }
-        }]);
-        
-        var lv1 = appcan.listview({
-            selector : "#listview2",
-            type : "thinLine",
-            hasAngle : false,
-            hasControl : true,
-            hasSubTitle : true
-        });
-        lv1.set([{
-            title : "清理缓存",
-            subTitle : "1.2MB"
         }]);
         
         var lv2 = appcan.listview({
@@ -118,9 +95,7 @@
             hasSubTitle : true
         });
         lv2.set([{
-            title : "意见反馈"
-        }, {
-            title : "关于"
+            title : "关于我们"
         }]);
     </script>
 </html>

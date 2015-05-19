@@ -27,6 +27,9 @@
         })        
         
         var updateData = appcan.locStorage.val("myquestion");
+        /*if(updateData == null){
+            appcan.window.alert("No question available!");
+        }else*/ 
         updateData = JSON.parse(updateData);
         var lv1 = appcan.listview({
             selector : "#listview",

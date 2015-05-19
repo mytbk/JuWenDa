@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="asking_content/css/main.css">
         </head class="um-vp bc-bg">
         <body>
-            <form name="form">
+            <form id="form">
                 <div class="inques ub ub-ver">
                     <div class="ulim uinn tx-l">
                         输入问题
@@ -76,8 +76,8 @@
                 appcan.initBounce();
             })
             appcan.button(".btn", "ani-act", function() {
-                var form = $('form');
-                appcan.request.post(ask_question_url, form, function() {
+                $("#form").attr("action",ask_question_url);
+                appcan.request.postForm($("#form"), function() {
                     appcan.window.alert({
                         title : "提示",
                         content : "提问成功，请耐心等待回答！",

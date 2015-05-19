@@ -1,7 +1,7 @@
 /*****************************************/
 /*基础header颜色*/
 .bc-head {
-    background-color: #00A1EA;
+    background-color: #00CFFF;
 }
 /*****************************************/
 /*基础body背景颜色*/
@@ -47,7 +47,7 @@
 }
 /*辅助字体颜色*/
 .sc-text-tab {
-    color: #636363;
+    color: #A3A3A3;
 }
 /*****************************************/
 /*基础边框颜色*/
@@ -61,11 +61,11 @@
 /*****************************************/
 /*基础按钮颜色*/
 .bc-btn {
-    background-color: #007DB8;
+    background-color: #00DDC8;
 }
 /*辅助按钮颜色*/
 .sc-btn {
-    background-color: #00A1EA;
+    background-color: #00C1FA;
 }
 
 
