@@ -70,6 +70,7 @@ function sendRequestWithDetailPage(link) {
         "link" : link
     }, function(data) {
         data = JSON.parse(data);
+        data = data["iw-response"]["iw-object"]["content"];
         //data = dealwithDetailPage(data.toString());
         appcan.locStorage.val("content", data);
         appcan.openWinWithUrl("details", "details.html");
