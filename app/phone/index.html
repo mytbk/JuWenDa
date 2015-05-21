@@ -84,12 +84,12 @@
             //    appcan.frame.open("content", "asking_content.html", 0, titHeight);
             //    return;
             case 1:
-                username = appcan.locStorage.val("username");
-                appcan.request.post(myquestion_url, {
+                //username = appcan.locStorage.val("username");
+                /*appcan.request.post(myquestion_url, {
                     "username" : username
                 }, function(data) {
                     appcan.locStorage.val("myquestion", data);
-                });
+                });*/
                 appcan.frame.open("content", "questions_content.html", 0, titHeight);
                 return;
             case 2:
