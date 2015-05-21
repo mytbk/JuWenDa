@@ -14,7 +14,7 @@
 }
 /*辅助控件背景颜色*/
 .sc-bg-active {
-    background-color: #DFDFDF;
+    background-color: #E8E8E8;
 }
 /*警告背景色*/
 .sc-bg-alert {
@@ -61,7 +61,7 @@
 /*****************************************/
 /*基础按钮颜色*/
 .bc-btn {
-    background-color: #00DDC8;
+    background-color: #00C1FA;
 }
 /*辅助按钮颜色*/
 .sc-btn {
