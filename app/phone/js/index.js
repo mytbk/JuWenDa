@@ -3,12 +3,7 @@ var listview;
 function initIndex() {
     appcan.initBounce();
 
-    appcan.button(".btn", "ani-act", function() {
-        question = $("#question").val();
-        sendRequestWithKey(1, question, listview);
-    });
-
-    listview = appcan.listview({
+    var listview = appcan.listview({
         selector : "#listview",
         type : "thickLine",
         hasIcon : false,
@@ -17,20 +12,36 @@ function initIndex() {
         multiLine : 1,
     });
 
-    data = [{
-        title : "输入想问的问题之后，您会得到以下结果！",
-        describe : "请点击以获得更多信息！",
-        note : "样例",
-    }];
+    appcan.button(".btn", "ani-act", function() {
+        question = $("#question").val();
+        sendRequestWithKey(1, question, listview);
+    });
+
+    var data = [{
+        title : "Spark如何配置？",
+        describe : "",
+    }, {
+        title : "机器学习如何并行化？",
+        describe : "",
+    }, {
+        title : "路由器如何配置IPV6？",
+        describe : "",
+    }, {
+        title : "程序猿如何找妹子？",
+        describe : "",
+    }]
+
+    listview.set(data);
+    /*var data = appcan.locStorage.val("resultlist");
 
     listview.set(data);
 
-    //    listview.on("click", function(ele, obj, curEle) {
-    //        var url = obj["id"];
-    //        appcan.locStorage.val("title", obj["title"]);
-    //        sendRequestWithDetailPage(url);
-    //    });
-    Bounce();
+    listview.on("click", function(ele, obj, curEle) {
+    var url = obj["id"];
+    appcan.locStorage.val("title", obj["title"]);
+    sendRequestWithDetailPage(url);
+    });*/
+    //Bounce();
 }
 
 function Bounce(funcTop, funcBottom) {

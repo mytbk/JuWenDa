@@ -7,6 +7,7 @@ function sendRequestWithKey(page, key, listview) {
         data = dealwithResult(data);
 
         appcan.locStorage.val("resultlist", data);
+        //listview.set(data);
         //uexLoadingView.close();
         appcan.openWinWithUrl("searchresult", "searchresult.html");
     });
