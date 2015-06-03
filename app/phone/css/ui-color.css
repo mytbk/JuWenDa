@@ -1,20 +1,25 @@
 /*****************************************/
 /*基础header颜色*/
 .bc-head {
-    background-color: #00A1EA;
+    /*background-color: #00CFFF;*/
+   background-color: #2daf30;
 }
 /*****************************************/
 /*基础body背景颜色*/
 .bc-bg {
-    background-color: #EEEEEE;
+    /*background-color: #EEEEEE;*/
+   background-color: #f7ffca;
 }
 /*辅助控件背景颜色*/
 .sc-bg {
-    background-color: #EEEEEE;
+    /*background-color: #EEEEEE;*/
+   background-color: #f7ffca;
 }
 /*辅助控件背景颜色*/
 .sc-bg-active {
-    background-color: #DFDFDF;
+    /*background-color: #E8E8E8;*/
+    /*background-color: #DFDFDF;*/
+   background-color: #b9ff8a;
 }
 /*警告背景色*/
 .sc-bg-alert {
@@ -35,11 +40,13 @@
 }
 /*辅助字体颜色*/
 .sc-text-active {
-    color: #00A1EA !important;
+    /*color: #00A1EA !important;*/
+    color: #2daf30 !important;
 }
 /*辅助字体颜色*/
 .sc-text-hint {
-    color: #E3E3E3;
+    /*color: #E3E3E3;*/
+   color: #f0ffc0;
 }
 /*辅助字体颜色*/
 .sc-text-warn {
@@ -47,7 +54,8 @@
 }
 /*辅助字体颜色*/
 .sc-text-tab {
-    color: #636363;
+    /*color: #A3A3A3;*/
+   color: #AFAFAF;
 }
 /*****************************************/
 /*基础边框颜色*/
@@ -61,11 +69,13 @@
 /*****************************************/
 /*基础按钮颜色*/
 .bc-btn {
-    background-color: #007DB8;
+    /*background-color: #00DDC8;*/
+   background-color: #3de040;
 }
 /*辅助按钮颜色*/
 .sc-btn {
-    background-color: #00A1EA;
+    /*background-color: #00C1FA;*/
+    background-color: #2daf30;
 }
 
 

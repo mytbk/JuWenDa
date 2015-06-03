@@ -8,10 +8,11 @@
         <link rel="stylesheet" href="css/ui-base.css">
         <link rel="stylesheet" href="css/ui-box.css">
         <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/ui-font.css">
         <link rel="stylesheet" href="css/appcan.control.css">
     </head>
     <body class="um-vp bc-bg ub-ver" ontouchstart>
-        <div class="ub ub-ver">
+        <div class="ub ub-ver fnt wdwrp">
             <div id="listview">
             </div>
         </div>
@@ -26,8 +27,24 @@
             //appcan.initBounce();
         })        
         
-        var updateData = appcan.locStorage.val("myquestion");
-        updateData = JSON.parse(updateData);
+        //var updateData = appcan.locStorage.val("myquestion");
+        /*if(updateData == null){
+            appcan.window.alert("No question available!");
+        }else*/ 
+        //updateData = JSON.parse(updateData);
+        var updateData = [{
+            title : "Spark如何配置？",
+            describe : "",
+        }, {
+            title : "机器学习如何并行化？",
+            describe : "", 
+        }, {
+            title : "路由器如何配置IPV6？",
+            describe : "", 
+        }, {
+            title : "程序猿如何找妹子？",
+            describe : "", 
+        }]
         var lv1 = appcan.listview({
             selector : "#listview",
             type : "thickLine",
@@ -37,7 +54,7 @@
         lv1.set(updateData);
 
         lv1.on('click', function(ele, context, obj, subobj) {
-            appcan.openWinWithUrl('details', 'details.html');
+            //appcan.openWinWithUrl('details', 'details.html');
         })
     </script>
 </html>

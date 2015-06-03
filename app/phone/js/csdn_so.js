@@ -7,7 +7,6 @@ function sendRequestWithKey(page, key, listview) {
         data = dealwithResult(data);
 
         appcan.locStorage.val("resultlist", data);
-        //uexLoadingView.close();
         appcan.openWinWithUrl("searchresult", "searchresult.html");
     });
     /*var jsonstr = {
@@ -69,7 +68,9 @@ function sendRequestWithDetailPage(link) {
     appcan.request.post(get_detail_url, {
         "link" : link
     }, function(data) {
-        data = dealwithDetailPage(data);
+        data = JSON.parse(data);
+        data = data["iw-response"]["iw-object"]["content"];
+        //data = dealwithDetailPage(data.toString());
         appcan.locStorage.val("content", data);
         appcan.openWinWithUrl("details", "details.html");
     });

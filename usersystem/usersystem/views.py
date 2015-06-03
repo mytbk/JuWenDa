@@ -160,6 +160,7 @@ def search_answer(request):
 	"p": 1,
 	"q": title
 	})
+	data = json.loads(result)
 	return JsonResponse(data)
 
 

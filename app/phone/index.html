@@ -8,16 +8,17 @@
         <link rel="stylesheet" href="css/ui-box.css"/>
         <link rel="stylesheet" href="css/ui-base.css"/>
         <link rel="stylesheet" href="css/ui-color.css"/>
+        <link rel="stylesheet" href="css/ui-font.css">
         <link rel="stylesheet" href="css/appcan.icon.css"/>
         <link rel="stylesheet" href="css/appcan.control.css"/>
         <link rel="stylesheet" href="index/main.css"/>
     </head>
     <body class="um-vp" ontouchstart>
-        <div id="page_0" class="up ub ub-ver" tabindex="0">
+        <div id="page_0" class="up ub ub-ver fnt" tabindex="0">
             <!--header开始-->
             <div id="header" class="uh bc-text-head ub bc-head">
                 <div class="nav-btn" id="nav-left"></div>
-                <h1 class="ut ub-f1 ulev0 ut-s tx-c" tabindex="0">聚问答</h1>
+                <h1 class="ut ub-f1 ulev0 ut-s tx-c fnt-h" tabindex="0">聚问答</h1>
                 <div class="nav-btn nav-bt" id="nav-right">
                     <div class="fa fa-power-off ulev1"></div>
                 </div>
@@ -83,7 +84,7 @@
             //    appcan.frame.open("content", "asking_content.html", 0, titHeight);
             //    return;
             case 1:
-                username = appcan.locStorage.val("username");
+                //username = appcan.locStorage.val("username");
                 /*appcan.request.post(myquestion_url, {
                     "username" : username
                 }, function(data) {
