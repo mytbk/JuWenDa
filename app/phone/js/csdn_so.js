@@ -26,26 +26,9 @@ function sendRequestWithKey(page, key, listview) {
 }
 
 function dealwithResult(data) {
-    var response,
-        object,
-        list,
-        text = {
-        title : "",
-        describe : "",
-        id : ""
-    },
-        resultData = [];
+    var resultData = [];
     var len = data.length;
-    var i,
-        j;
-    for ( i = 0; i < len; i++)
-        if (data[i] == '[')
-            break;
-    for ( j = len - 1; j >= 0; j--)
-        if (data[j] == ']')
-            break;
-    data = data.substring(i, j + 1);
-    var data = eval(data);
+    var data = JSON.parse(data);
     len = data.length;
     for ( i = 0; i < len; i++) {
         var text = {

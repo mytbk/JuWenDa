@@ -154,14 +154,26 @@ def search_answer(request):
 	user = User.objects.get(username=username)
 	search = Search(title=title, user=user)
 	search.save()
-	result = call_api({
-	"iw-apikey": 123,
-	"iw-cmd": "search",
-	"p": 1,
-	"q": title
-	})
-	data = json.loads(result)
-	return JsonResponse(data)
+	answers = []
+	page = 1
+	while len(answers) <= 20 and page <= 10:
+		result = call_api({
+		"iw-apikey": 123,
+		"iw-cmd": "search",
+		"p": page,
+		"q": title
+		})
+		data = json.loads(result)
+		data = data["iw-response"]["iw-object"]["list"]
+		for answer in data:
+			print(answer)
+			rep = [x for x in answers
+			       if x["summary"].count(answer["summary"][:-12]) != 0 or answer["summary"].count(x["summary"][:-12]) != 0]
+			print(len(rep))
+			if len(rep) == 0:
+				answers.append(answer)
+		page += 1
+	return JsonResponse(answers, safe=False)
 
 
 @csrf_exempt
