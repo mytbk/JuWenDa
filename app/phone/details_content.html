@@ -22,6 +22,7 @@
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
         <script src="js/details.js"></script>
+        <script src="js/config.js"></script>
     </body>
     <script>
         appcan.ready(function() {
@@ -42,7 +43,7 @@
                 type: "POST",
                 url: get_vote_url,
                 data: {
-                    "link": l;
+                    "link": l
                 },
                 success: function(data) {
                     n = data["good"];
@@ -58,8 +59,8 @@
                 type: "POST",
                 url: up_vote_url,
                 data: {
-                    "link": l;
-                    "username": u;
+                    "link": l,
+                    "username": u
                 },
                 success: function(data) {
                     getZanNum();
