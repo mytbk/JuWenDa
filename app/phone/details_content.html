@@ -15,6 +15,10 @@
         <div class="ansfrm">
             <div id="answer"></div>
         </div>
+        <div id="zan" onclick="doZan();">
+            <img src="details/css/myImg/zan.png">
+            <span id="zanNum">0</span>
+        </div>
         <script src="js/appcan.js"></script>
         <script src="js/appcan.control.js"></script>
         <script src="js/details.js"></script>
@@ -27,6 +31,40 @@
             content = appcan.locStorage.val("content");
             $("#answer").empty();
             $("#answer").append(content);
-        })
+            getZanNum();
+        });
+        function getZanNum() {
+            var v = document.getElementById("zanNum");
+            var n;
+            var l = appcan.locStorage.val("link");
+            $.ajax({
+                async: false,
+                type: "POST",
+                url: get_vote_url,
+                data: {
+                    "link": l;
+                },
+                success: function(data) {
+                    n = data["good"];
+                    v.innerHTML = String(n);
+                }
+            });
+        }
+        function doZan() {
+            var l = appcan.locStorage.val("link");
+            var u = appcan.locStorage.val("username");            
+            $.ajax({
+                asycn: false,
+                type: "POST",
+                url: up_vote_url,
+                data: {
+                    "link": l;
+                    "username": u;
+                },
+                success: function(data) {
+                    getZanNum();
+                }
+            });
+        }
     </script>
 </html>
