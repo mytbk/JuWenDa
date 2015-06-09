@@ -37,6 +37,9 @@ class Answer(models.Model):
 	link = models.URLField()
 	good = models.IntegerField()
 
+	def __str__(self):
+		return "link: {0} good: {1}".format(self.link, self.good)
+
 
 class UserModel(models.Model):
 	user = models.OneToOneField(User)
