@@ -54,6 +54,7 @@ function sendRequestWithDetailPage(link) {
         data = JSON.parse(data);
         data = data["iw-response"]["iw-object"]["content"];
         //data = dealwithDetailPage(data.toString());
+        appcan.locStorage.val("link", link);
         appcan.locStorage.val("content", data);
         appcan.openWinWithUrl("details", "details.html");
     });
