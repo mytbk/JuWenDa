@@ -40,7 +40,7 @@ class Answer(models.Model):
 
 class UserModel(models.Model):
 	user = models.OneToOneField(User)
-	imei = models.TextField(default="")
-	voteAnswers = models.ManyToManyField(Answer)
+	imei = models.TextField(default="", blank=True)
+	voteAnswers = models.ManyToManyField(Answer, blank=True)
 
 
