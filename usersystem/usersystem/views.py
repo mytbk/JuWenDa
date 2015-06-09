@@ -246,7 +246,7 @@ def up_vote(request):
 		answer.save()
 		userModel.voteAnswers.add(answer)
 		userModel.save()
-	return JsonResponse("")
+	return JsonResponse({})
 
 
 @csrf_exempt
@@ -262,7 +262,7 @@ def get_vote(request):
 	"""
 	link = request.POST["link"]
 	try:
-		answer = Answer.get(link=link)
+		answer = Answer.objects.get(link=link)
 		return JsonResponse({"good": answer.good})
 	except ObjectDoesNotExist:
 		return JsonResponse({"good": 0})
