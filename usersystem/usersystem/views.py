@@ -240,6 +240,7 @@ def up_vote(request):
 	try:
 		answer = userModel.voteAnswers.get(link=link)
 		answer.good = answer.good - 1
+		userModel.voteAnswers.remove(answer)
 		answer.save()
 	except ObjectDoesNotExist:
 		answer = Answer(link=link, good=1)
