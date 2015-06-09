@@ -243,10 +243,17 @@ def up_vote(request):
 		userModel.voteAnswers.remove(answer)
 		answer.save()
 	except ObjectDoesNotExist:
-		answer = Answer(link=link, good=1)
-		answer.save()
-		userModel.voteAnswers.add(answer)
-		userModel.save()
+		try:
+			answer = Answer.objects.get(link=link)
+			answer.good = answer.good + 1
+			answer.save()
+			userModel.voteAnswers.add(answer)
+			userModel.save()
+		except ObjectDoesNotExist:
+			answer = Answer(link=link, good=1)
+			answer.save()
+			userModel.voteAnswers.add(answer)
+			userModel.save()
 	return JsonResponse({})
 
 
