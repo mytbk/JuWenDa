@@ -1,6 +1,6 @@
 
-//server_url = "http://127.0.0.1:8000";
-server_url = "http://101.200.178.155:8000/phone";
+server_url = "http://127.0.0.1:8000/phone";
+//server_url = "http://101.200.178.155:8000/phone";
 
 is_created_url = server_url + "/isCreated";
 create_user_url = server_url + "/createUser";

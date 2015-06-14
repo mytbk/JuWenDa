@@ -1,0 +1,73 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>聚问答</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="{% static 'image/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/amazeui.min.css' %}" />
+    <style>
+
+    .get {
+        background: #22A1E7;
+        color: #fff;
+        text-align: center;
+        padding: 40px 0;
+    }
+
+    .header {
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 300%;
+        margin-top: 30px;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="header am-animation-fade">
+        <div class="am-g get">
+            <h1>聚问答</h1>
+            <p>Get Your Questions Answered
+                <br/>让世界为你解答</p>
+        </div>
+    </div>
+    <br>
+    <div class="am-g">
+        <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+            <blockquote>
+                <p>It is not the answer that enlightens, but the question.</p>
+                <small>Eugène Ionesco</small>
+            </blockquote>
+            <form method="post" class="am-form">
+                <label for="email">请输入你的问题:</label>
+                <input type="email" name="" id="email" value="">
+                <br>
+                <div class="am-cf">
+                    <input type="submit" name="" value="得到答案" class="am-btn am-btn-primary am-btn-sm am-fr">
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="am-margin-top">
+        <hr/>
+        <p class="am-text-center">
+            <small>© 2015 Software Engineering Experimental Class. Licensed under MIT license.</small>
+        </p>
+    </footer>
+</body>
+
+</html>

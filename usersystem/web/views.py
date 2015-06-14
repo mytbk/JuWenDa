@@ -4,9 +4,22 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from usersystem.models import UserModel, Search, Answer
 from usersystem.utils import call_api
+
+
+def index(request):
+	return render(request, "index.html")
+
+
+def search(request):
+	return render(request, "search.html")
+
+
+def answerlist(request):
+	return render(request, "answerlist.html", {})
 
 
 @csrf_exempt
