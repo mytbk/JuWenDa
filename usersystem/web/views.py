@@ -84,7 +84,7 @@ def set_password(request):
 @csrf_exempt
 def search_answer(request):
 	title = request.POST["title"]
-	if not request.user is None:
+	if request.user.is_authenticated():
 		user = request.user
 		search = Search(title=title, user=user)
 		search.save()
