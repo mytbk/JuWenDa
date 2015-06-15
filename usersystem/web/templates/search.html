@@ -52,13 +52,14 @@
                 <p>It is not the answer that enlightens, but the question.</p>
                 <small>Eugène Ionesco</small>
             </blockquote>
-            <form method="post" class="am-form">
-                <label for="email">请输入你的问题:</label>
-                <input type="email" name="" id="email" value="">
+            <form method="post" action="{% url 'web:searchAnswer' %}" class="am-form">
+                <label for="text">请输入你的问题:</label>
+                <input type="text" name="title" id="text" value="">
                 <br>
                 <div class="am-cf">
                     <input type="submit" name="" value="得到答案" class="am-btn am-btn-primary am-btn-sm am-fr">
                 </div>
+	            {% csrf_token %}
             </form>
         </div>
     </div>

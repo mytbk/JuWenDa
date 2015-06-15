@@ -6,6 +6,6 @@ import web
 urlpatterns = patterns(
 	'',
     url(r'^phone/', include(phone_urls, namespace='phone')),
-    url(r'^web/', include('web.urls', namespace='phone')),
+    url(r'^web/', include('web.urls', namespace='web')),
 	url(r'^admin/', include(admin.site.urls)),
 )

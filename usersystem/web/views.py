@@ -11,7 +11,7 @@ from usersystem.utils import call_api
 
 
 def index(request):
-	return render(request, "index.html")
+	return render(request, "index.html", {})
 
 
 def search(request):
@@ -50,27 +50,15 @@ def create_user(request):
 
 @csrf_exempt
 def authenticate_user(request):
-	"""
-	验证用户名和密码是否正确
-	前置条件
-		该接口要求POST请求
-	参数
-		"username": 用户名
-		"password": 密码
-	返回数据
-		"status": 验证状态<int>
-		0: 操作成功
-		1: 用户输入的密码错误
-	"""
 	username = request.POST["username"]
 	password = request.POST["password"]
 	user = authenticate(username=username, password=password)
 	# 密码输入错误
 	if user is None:
-		return JsonResponse({"status": 1})
+		return render(request, "index.html", {"error": 1})
 	# 验证成功
 	login(request, user)
-	return JsonResponse({"status": 0})
+	return render(request, "search.html", {})
 
 
 @csrf_exempt
@@ -95,21 +83,11 @@ def set_password(request):
 
 @csrf_exempt
 def search_answer(request):
-	"""
-	搜索问题
-	前置条件
-		该接口要求POST请求
-	参数
-		"title": 问题标题
-		"username": 用户名
-	返回数据
-		见燕风API
-	"""
 	title = request.POST["title"]
-	username = request.POST["username"]
-	user = User.objects.get(username=username)
-	search = Search(title=title, user=user)
-	search.save()
+	if not request.user is None:
+		user = request.user
+		search = Search(title=title, user=user)
+		search.save()
 	answers = []
 	page = 1
 	while len(answers) <= 20 and page <= 10:
@@ -129,7 +107,7 @@ def search_answer(request):
 			if len(rep) == 0:
 				answers.append(answer)
 		page += 1
-	return JsonResponse(answers, safe=False)
+	return render(request, "answerlist.html", {"answers": answers})
 
 
 @csrf_exempt

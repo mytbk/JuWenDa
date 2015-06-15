@@ -51,7 +51,7 @@
                 <p>The simplest questions are the hardest to answer.</p>
                 <small>Northrop Frye</small>
             </blockquote>
-            <form method="post" class="am-form">
+            <form method="post" action="{% url 'web:authenticateUser' %}" class="am-form">
                 <label for="username">账号:</label>
                 <input type="text" name="username" id="username" value="">
                 <br>
@@ -60,7 +60,7 @@
                 <br>
                 <div class="am-cf">
                     <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-                    <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+	                <a class="am-fr" href="{% url 'web:search' %}">跳过登录</a>
                 </div>
 	            {% csrf_token %}
             </form>
