@@ -14,60 +14,6 @@
 	<meta content="no-siteapp"/>
 	<link rel="alternate icon" type="image/png" href="{% static 'image/favicon.png' %}">
 	<link rel="stylesheet" href="{% static 'css/amazeui.min.css' %}"/>
-	<style>
-		@media only screen and (min-width: 1200px) {
-			.blog-g-fixed {
-				max-width: 1200px;
-			}
-		}
-
-		@media only screen and (min-width: 641px) {
-			.blog-sidebar {
-				font-size: 1.4rem;
-			}
-		}
-
-		.blog-main {
-			padding: 20px 0;
-		}
-
-		.blog-title {
-			margin: 10px 0 20px 0;
-		}
-
-		.blog-meta {
-			font-size: 14px;
-			margin: 10px 0 20px 0;
-			color: #222;
-		}
-
-		.blog-meta a {
-			color: #27ae60;
-		}
-
-		.blog-pagination a {
-			font-size: 1.4rem;
-		}
-
-		.blog-team li {
-			padding: 4px;
-		}
-
-		.blog-team img {
-			margin-bottom: 0;
-		}
-
-		.blog-content img,
-		.blog-team img {
-			max-width: 100%;
-			height: auto;
-		}
-
-		.blog-footer {
-			padding: 10px 0;
-			text-align: center;
-		}
-	</style>
 </head>
 
 <body>
@@ -101,23 +47,10 @@
 		</form>
 	</div>
 </header>
-<div class="am-g am-g-fixed blog-g-fixed">
-	{% for answer in answers %}
-		<div class="am-u-lg-6 am-u-sm-12 am-u-sm-centered">
-			<article class="blog-main">
-				<h3 class="blog-title">
-					<a href="{% url 'web:getDetail' link=answer.link %}">{{ answer.title }}</a>
-				</h3>
-
-				<div class="am-g blog-content">
-					<div class="am-u-sm-12">
-						{{ answer.summary }}
-					</div>
-				</div>
-			</article>
-			<hr class="am-article-divider blog-hr">
-		</div>
-	{% endfor %}
+<div class="am-g am-g-fixed">
+	{% autoescape off %}
+		{{ content }}
+	{% endautoescape %}
 </div>
 <footer class="blog-footer">
 	<small>© 2015 Software Engineering Experimental Class. Licensed under MIT license.</small>

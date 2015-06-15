@@ -101,6 +101,8 @@ def search_answer(request):
 		data = data["iw-response"]["iw-object"]["list"]
 		for answer in data:
 			print(answer)
+			if not answer["link"].startswith("http://blog.csdn.net"):
+				continue
 			rep = [x for x in answers
 			       if x["summary"].count(answer["summary"][:-12]) != 0 or answer["summary"].count(x["summary"][:-12]) != 0]
 			print(len(rep))
@@ -111,17 +113,9 @@ def search_answer(request):
 
 
 @csrf_exempt
-def get_detail(request):
-	"""
-	获得详细结果页面
-	前置条件
-		该接口要求POST请求
-	参数
-		"link": 详细页面URL
-	返回数据
-		见燕风API
-	"""
-	link = request.POST["link"]
+def get_detail(request, link):
+	link = link.replace("http://blog.csdn.net","")
+	print(link)
 	result = call_api({
 	"iw-apikey": 123,
 	"iw-cmd": "resultcontent",
@@ -129,7 +123,8 @@ def get_detail(request):
 	})
 	data = json.loads(result)
 	print(data)
-	return JsonResponse(data)
+	data = data["iw-response"]["iw-object"]["content"]
+	return render(request, "detailpage.html", {"content": data})
 
 
 @csrf_exempt

@@ -13,7 +13,7 @@ urlpatterns = patterns(
 	url(r'^setPassword$', views.set_password, name='setPassword'),
 	url(r'^askQuestion$', views.ask_question, name='askQuestion'),
 	url(r'^searchAnswer$', views.search_answer, name='searchAnswer'),
-	url(r'^getDetail$', views.get_detail, name='getDetail$'),
-	url(r'^upVote$', views.up_vote, name='upVote$'),
-	url(r'^getVote$', views.get_vote, name='getVote$'),
+	url(r'^getDetail/(?P<link>.*)$', views.get_detail, name='getDetail'),
+	url(r'^upVote$', views.up_vote, name='upVote'),
+	url(r'^getVote$', views.get_vote, name='getVote'),
 )
