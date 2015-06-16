@@ -102,8 +102,11 @@
 	</div>
 </header>
 <div class="am-g am-g-fixed blog-g-fixed">
-	{% for answer in answers %}
-		<div class="am-u-lg-6 am-u-sm-12 am-u-sm-centered">
+	<div class="am-u-lg-3 am-u-sm-0">
+		<img class="am-img-responsize" src="{% static 'image/askcat.png' %}" width="100%" >
+	</div>
+	<div class="am-u-lg-6 am-u-sm-12">
+		{% for answer in answers %}
 			<article class="blog-main">
 				<h3 class="blog-title">
 					<a href="{% url 'web:getDetail' link=answer.link %}">{{ answer.title }}</a>
@@ -116,8 +119,11 @@
 				</div>
 			</article>
 			<hr class="am-article-divider blog-hr">
-		</div>
-	{% endfor %}
+		{% endfor %}
+	</div>
+	<div class="am-u-lg-3 am-u-sm-0">
+		<img class="am-img-responsize" src="{% static 'image/answercat.png' %}" width="100%" >
+	</div>
 </div>
 <footer class="blog-footer">
 	<small>© 2015 Software Engineering Experimental Class. Licensed under MIT license.</small>
