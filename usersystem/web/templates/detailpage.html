@@ -63,7 +63,7 @@
         function getZanNum() {
             var v = document.getElementById("zanNum");
             var n;
-            var l = "{% url 'web:getDetail' %}";
+            var l = "{{ linkurl }}";
             $.ajax({
                 async: false,
                 type: "POST",
@@ -78,8 +78,8 @@
             });
         }
         function doZan() {
-            var l = "{% url 'web:getDetail' %}";
-            var u = appcan.locStorage.val("username");            
+            var l = "{{ linkurl }}";
+            var u = "noname"; // FIXME: how to get the user name?
             $.ajax({
                 async: false,
                 type: "POST",

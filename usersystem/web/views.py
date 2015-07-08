@@ -124,7 +124,7 @@ def get_detail(request, link):
 	data = json.loads(result)
 	print(data)
 	data = data["iw-response"]["iw-object"]["content"]
-	return render(request, "detailpage.html", {"content": data})
+	return render(request, "detailpage.html", {"content": data, "linkurl": link})
 
 
 @csrf_exempt
