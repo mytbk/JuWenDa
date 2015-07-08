@@ -51,10 +51,49 @@
 	{% autoescape off %}
 		{{ content }}
 	{% endautoescape %}
+        <div id="zan" onclick="doZan();">
+          有 <span id="zanNum">0</span> 人为此点赞
+        </div>
+
 </div>
 <footer class="blog-footer">
 	<small>© 2015 Software Engineering Experimental Class. Licensed under MIT license.</small>
 </footer>
+<script>
+        function getZanNum() {
+            var v = document.getElementById("zanNum");
+            var n;
+            var l = "{% url 'web:getDetail' %}";
+            $.ajax({
+                async: false,
+                type: "POST",
+                url: "{% url 'web:getVote' %}",
+                data: {
+                    "link": l
+                },
+                success: function(data) {
+                    n = data["good"];
+                    v.innerHTML = String(n);
+                }
+            });
+        }
+        function doZan() {
+            var l = "{% url 'web:getDetail' %}";
+            var u = appcan.locStorage.val("username");            
+            $.ajax({
+                async: false,
+                type: "POST",
+                url: "{% url 'web:upVote' %}",
+                data: {
+                    "link": l,
+                    "username": u
+                },
+                success: function(data) {
+                    getZanNum();
+                }
+            });
+        }
+</script>
 <!--[if lt IE 9]>
     <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
