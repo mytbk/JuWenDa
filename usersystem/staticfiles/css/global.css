@@ -1,0 +1,51 @@
+@font-face {
+	font-family: HOMIGOS;
+	src: url("../fonts/HOMIGOS.ttf");
+}
+
+body.wk-index {
+	background-image: url("../img/background.png");
+	text-align: center;
+	height: auto;
+}
+
+div.wk-index-woooking {
+	color: #cccccc;
+	font-family: HOMIGOS, sans-serif;
+	font-size: 10em;
+	margin-top: 140px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input.wk-input-left {
+	margin-top: 4px !important;
+	margin-bottom: 4px !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	border-right: 1px !important;
+	border-style: inset !important;
+	height: 25px !important;
+}
+
+input.wk-input-right {
+	margin-top: 4px !important;
+	margin-bottom: 4px !important;
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-left: 1px !important;
+	border-style: inset !important;
+	border-left-style: none !important;
+	height: 25px !important;
+}
+
+.wk-line {
+	background-color: #cccccc;
+	height: 1px;
+	margin-bottom: 10px;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-top: -40px;
+}
+
+
