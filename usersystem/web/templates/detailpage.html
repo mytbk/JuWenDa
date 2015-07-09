@@ -79,14 +79,12 @@
         }
         function doZan() {
             var l = "{{ linkurl }}";
-            var u = "noname"; // FIXME: how to get the user name?
             $.ajax({
                 async: false,
                 type: "POST",
                 url: "{% url 'web:upVote' %}",
                 data: {
                     "link": l,
-                    "username": u
                 },
                 success: function(data) {
                     getZanNum();
