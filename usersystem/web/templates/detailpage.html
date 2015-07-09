@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="{% static 'css/amazeui.min.css' %}"/>
 </head>
 
-<body>
+<body onload="getZanNum();">
 <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
 	<h1 class="am-topbar-brand">
 		<a href="{% url 'web:index' %}">聚问答</a>
@@ -52,7 +52,7 @@
 		{{ content }}
 	{% endautoescape %}
         <div id="zan" onclick="doZan();">
-          有 <span id="zanNum">0</span> 人为此点赞
+          有 <span id="zanNum">x</span> 人为此点赞
         </div>
 
 </div>
